@@ -125,3 +125,53 @@ Este es un proyecto educativo. Se anima a los estudiantes a:
 4. Añadir tests para las nuevas funciones
 
 ¡Buena suerte y que disfrutes programando! 🎮✨
+
+## 👥 Autoría y Licencia
+
+### ✍️ Autoría
+Creado y diseñado por: **Anaïs Rodríguez Villanueva**  
+Contacto: [GitHub @Anais-RV](https://github.com/Anais-RV)
+
+Este material educativo ha sido desarrollado de forma independiente y vocacional con el objetivo de proporcionar recursos de calidad para el aprendizaje de Python. Representa cientos de horas de trabajo en diseño pedagógico, creación de contenidos y desarrollo de ejercicios progresivos.
+
+### 📄 Licencia y Uso
+Este proyecto está licenciado bajo **MIT License** (ver `LICENSE`).
+
+Esto significa que puedes:
+
+✅ Usar este material para aprender o enseñar Python  
+✅ Compartir el repositorio con estudiantes  
+✅ Adaptar los ejercicios para tus necesidades  
+✅ Hacer fork del proyecto  
+
+Con la condición de:
+
+⚠️ Mantener la atribución de autoría original en todos los materiales derivados  
+⚠️ Incluir una referencia a este repositorio: [github.com/Anais-RV/python-fundamentos](https://github.com/Anais-RV/python-fundamentos)  
+⚠️ Mencionar a Anaïs Rodríguez Villanueva como autora original  
+
+**Uso comercial:**  
+Si deseas usar este material en contextos comerciales (cursos de pago, bootcamps, formaciones empresariales), por favor:
+
+- Mantén visiblemente la atribución de autoría  
+- Considera contactar para una mención o colaboración  
+- Respeta el espíritu educativo y vocacional del proyecto  
+
+### 🤝 Contribuciones
+Las contribuciones son bienvenidas y apreciadas. Al contribuir, aceptas que:
+
+- Tu contribución se licenciará bajo los mismos términos (MIT)  
+- La autoría original del proyecto se mantiene como Anaïs Rodríguez Villanueva  
+- Las contribuciones significativas serán reconocidas en `CONTRIBUTING.md`  
+
+Por favor, consulta `CONTRIBUTING.md` para más detalles sobre cómo participar en el proyecto.
+
+### 💝 Reconocimientos
+Este proyecto es un esfuerzo educativo independiente creado con dedicación para la comunidad de aprendizaje de Python. Si te ha sido útil, considera:
+
+⭐ Dar una estrella al repositorio  
+🔄 Compartir con otros estudiantes  
+💬 Proporcionar feedback o mejoras  
+📢 Mencionar el proyecto si lo usas en tus clases  
+
+© 2025 Anaïs Rodríguez Villanueva. Material educativo de código abierto bajo licencia MIT.

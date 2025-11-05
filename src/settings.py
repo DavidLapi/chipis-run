@@ -98,20 +98,34 @@ KEY_P = pygame.K_p
 STATE_MENU = "menu"
 STATE_PLAYING = "playing"
 STATE_GAME_OVER = "game_over"
-STATE_PAUSED = "paused"  # TODO 1: Implementar estado de pausa
+STATE_PAUSED = "paused"  # ✅ IMPLEMENTADO: Estado de pausa
 
 # === CONFIGURACIÓN DE FUENTES ===
 FONT_SIZE_LARGE = 48   # Tamaño de fuente para títulos
 FONT_SIZE_MEDIUM = 24  # Tamaño de fuente para texto normal
 FONT_SIZE_SMALL = 16   # Tamaño de fuente para detalles
 
-# TODO 2: Añadir configuración para barra de cooldown
-# COOLDOWN_BAR_WIDTH = 100
-# COOLDOWN_BAR_HEIGHT = 10
+# ✅ IMPLEMENTADO: Configuración para barra de cooldown
+COOLDOWN_BAR_WIDTH = 100   # Ancho de la barra de cooldown en píxeles
+COOLDOWN_BAR_HEIGHT = 10   # Alto de la barra de cooldown en píxeles
+COOLDOWN_BAR_X = 10        # Posición X de la barra de cooldown
+COOLDOWN_BAR_Y = 100       # Posición Y de la barra de cooldown
 
-# TODO 3: Añadir configuración para dificultad progresiva
-# DIFFICULTY_INCREASE_INTERVAL = 10  # Cada cuántos puntos aumenta la dificultad
-# MAX_OBSTACLE_SPEED = 8             # Velocidad máxima de obstáculos
+# ✅ IMPLEMENTADO: Configuración para dificultad progresiva
+DIFFICULTY_INCREASE_INTERVAL = 10  # Cada cuántos puntos aumenta la dificultad
+MAX_OBSTACLE_SPEED = 8             # Velocidad máxima de obstáculos
+SPEED_INCREASE_RATE = 0.5          # Cuánto aumenta la velocidad por nivel
+MAX_SPAWN_RATE_REDUCTION = 30      # Máxima reducción en frames de spawn
+
+# ✅ IMPLEMENTADO: Configuración de efectos visuales
+PARTICLE_COUNT = 15                # Número de partículas en explosión
+PARTICLE_LIFE = 30                 # Vida de partículas en frames
+SCREEN_SHAKE_INTENSITY = 5         # Intensidad del screen shake
+SCREEN_SHAKE_DURATION = 10         # Duración del screen shake en frames
+
+# ✅ IMPLEMENTADO: Configuración de animaciones
+SPRITE_ANIMATION_SPEED = 8         # Frames entre cambios de sprite
+POWERUP_PULSE_SPEED = 4           # Velocidad del efecto de pulso en power-ups
 
 # TODO 4: Añadir rutas de assets cuando estén disponibles
 # SPRITE_JULIA = "assets/sprites/julia.png"

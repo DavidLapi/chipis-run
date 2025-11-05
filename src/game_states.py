@@ -191,9 +191,9 @@ class PlayingState:
                         # pygame.mixer.Sound(SOUND_THROW).play()
                 
                 elif event.key == KEY_P:
-                    # TODO 1: Implementar pausa
-                    # self.state_manager.change_state(STATE_PAUSED)
-                    print("Pausa no implementada aún")  # Debug
+                    # ✅ IMPLEMENTADO: Implementar pausa
+                    self.state_manager.change_state(STATE_PAUSED)
+                    print("Juego pausado")  # Debug
                 
                 elif event.key == KEY_ESCAPE:
                     return new_knives, False  # Salir del juego
@@ -335,11 +335,11 @@ class PlayingState:
             shield_text = self.state_manager.font_small.render("🛡️ ESCUDO ACTIVO", True, TEA_COLOR)
             screen.blit(shield_text, (10, 70))
         
-        # TODO 2: Barra de cooldown
-        # knife_cooldown.draw_cooldown_bar(screen, 10, 100, 100, 10)
+        # ✅ IMPLEMENTADO: Barra de cooldown visual
+        knife_cooldown.draw_cooldown_bar(screen)
         
-        # TODO 6: Efectos activos
-        # effects.draw_active_effects(screen, self.state_manager.font_small)
+        # ✅ IMPLEMENTADO: Efectos activos
+        effects.draw_active_effects(screen, self.state_manager.font_small)
 
 
 class GameOverState:
@@ -428,6 +428,106 @@ class GameOverState:
         exit_text = self.state_manager.font_small.render("ESC para salir", True, WHITE)
         exit_rect = exit_text.get_rect(center=(WINDOW_WIDTH//2, 380))
         screen.blit(exit_text, exit_rect)
+
+
+# ✅ IMPLEMENTADO: Estado de pausa
+class PausedState:
+    """
+    Estado cuando el juego está pausado.
+    
+    En este estado el juego se detiene pero se mantiene visible
+    en el fondo con una indicación de pausa superpuesta.
+    """
+    
+    def __init__(self, state_manager):
+        """Constructor del estado de pausa."""
+        self.state_manager = state_manager
+        
+        # ✅ IMPLEMENTADO: Efecto visual de pausa
+        self.pulse_timer = 0  # Para efecto de pulso en el texto "PAUSED"
+    
+    def handle_events(self, events):
+        """
+        Maneja eventos en estado de pausa.
+        
+        Args:
+            events: Lista de eventos de pygame
+        """
+        for event in events:
+            if event.type == pygame.KEYDOWN:
+                if event.key == KEY_P:
+                    # Reanudar el juego
+                    self.state_manager.change_state(STATE_PLAYING)
+                    print("Juego reanudado")  # Debug
+                elif event.key == KEY_ESCAPE:
+                    # Volver al menú principal
+                    self.state_manager.change_state(STATE_MENU)
+                    print("Volviendo al menú desde pausa")  # Debug
+        return True
+    
+    def update(self):
+        """Actualizar efectos visuales de la pausa."""
+        self.pulse_timer += 1
+    
+    def draw(self, screen, game_surface=None):
+        """
+        Dibuja la pantalla de pausa.
+        
+        Args:
+            screen: Superficie donde dibujar
+            game_surface: Superficie del juego de fondo (opcional)
+        """
+        
+        # ✅ IMPLEMENTADO: Mostrar el juego de fondo con overlay de pausa
+        if game_surface:
+            # Dibujar el juego de fondo ligeramente oscurecido
+            dark_surface = pygame.Surface((WINDOW_WIDTH, WINDOW_HEIGHT))
+            dark_surface.fill((0, 0, 0))
+            dark_surface.set_alpha(128)  # Semi-transparente
+            
+            screen.blit(game_surface, (0, 0))
+            screen.blit(dark_surface, (0, 0))
+        else:
+            # Si no hay superficie de fondo, usar color sólido
+            screen.fill((50, 50, 50))  # Gris oscuro
+        
+        # ✅ IMPLEMENTADO: Texto "PAUSED" con efecto de pulso
+        pulse_factor = abs(pygame.math.Vector2(1, 0).rotate(self.pulse_timer * 3).x)
+        pulse_size = int(FONT_SIZE_LARGE + pulse_factor * 10)
+        
+        try:
+            pulse_font = pygame.font.Font(None, pulse_size)
+        except:
+            pulse_font = self.state_manager.font_large
+        
+        paused_text = pulse_font.render("PAUSED", True, YELLOW)
+        paused_rect = paused_text.get_rect(center=(WINDOW_WIDTH//2, WINDOW_HEIGHT//2 - 50))
+        
+        # Sombra del texto para mejor legibilidad
+        shadow_text = pulse_font.render("PAUSED", True, BLACK)
+        shadow_rect = shadow_text.get_rect(center=(paused_rect.centerx + 3, paused_rect.centery + 3))
+        screen.blit(shadow_text, shadow_rect)
+        screen.blit(paused_text, paused_rect)
+        
+        # Instrucciones
+        instructions = [
+            "Presiona P para continuar",
+            "ESC para volver al menú"
+        ]
+        
+        y_offset = WINDOW_HEIGHT//2 + 20
+        for instruction in instructions:
+            text = self.state_manager.font_medium.render(instruction, True, WHITE)
+            text_rect = text.get_rect(center=(WINDOW_WIDTH//2, y_offset))
+            
+            # Fondo semi-transparente para las instrucciones
+            bg_rect = pygame.Rect(text_rect.x - 10, text_rect.y - 5,
+                                text_rect.width + 20, text_rect.height + 10)
+            pygame.draw.rect(screen, BLACK, bg_rect)
+            pygame.draw.rect(screen, WHITE, bg_rect, 1)
+            
+            screen.blit(text, text_rect)
+            y_offset += 40
 
 
 # TODO 1: Estado de pausa
