@@ -1,0 +1,12 @@
+# Placeholder for Julia sprite
+# This file serves as a placeholder for the actual julia.png sprite
+# Students can replace this with a real sprite image
+
+# Expected dimensions: 40x60 pixels (PLAYER_WIDTH x PLAYER_HEIGHT)
+# Format: PNG with transparency support
+# Style: Pixel art or simple cartoon character
+
+# TODO 4: Replace this placeholder with actual sprite
+# - Create or find a sprite for Julia (main character)
+# - Ensure proper dimensions match PLAYER_WIDTH and PLAYER_HEIGHT in settings.py
+# - Add transparency (alpha channel) for better visual integration

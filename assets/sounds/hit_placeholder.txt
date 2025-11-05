@@ -1,0 +1,12 @@
+# Placeholder for hit/damage sound effect
+# This file serves as a placeholder for the actual hit.wav sound
+
+# Expected format: WAV or OGG
+# Duration: 0.2-0.5 seconds
+# Style: Impact sound when player takes damage
+
+# TODO 4: Replace this placeholder with actual sound
+# - Record or find a hit/impact sound effect
+# - Should convey damage or collision
+# - Not too harsh or unpleasant for repeated listening
+# - Consider different sounds for shield hits vs actual damage

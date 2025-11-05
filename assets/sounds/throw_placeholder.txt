@@ -1,0 +1,12 @@
+# Placeholder for throw sound effect
+# This file serves as a placeholder for the actual throw.wav sound
+
+# Expected format: WAV or OGG
+# Duration: 0.1-0.3 seconds
+# Style: Quick "whoosh" or "swish" sound for knife throwing
+
+# TODO 4: Replace this placeholder with actual sound
+# - Record or find a throwing sound effect
+# - Keep it short and punchy
+# - Ensure it's not too loud or distracting
+# - Test with multiple rapid throws to ensure it doesn't overlap badly

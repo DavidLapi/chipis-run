@@ -1,0 +1,14 @@
+# Placeholder for power-up sprites
+# This file serves as a placeholder for the actual powerup.png sprites
+
+# Expected dimensions: 25x25 pixels (POWERUP_WIDTH x POWERUP_HEIGHT)
+# Format: PNG with transparency support
+# Types needed:
+# - vodka_boost.png (purple/violet colored bottle)
+# - tea_magic.png (green colored tea cup)
+
+# TODO 4: Replace this placeholder with actual sprites
+# - Create or find sprites for both power-up types
+# - Ensure proper dimensions match POWERUP_WIDTH and POWERUP_HEIGHT in settings.py
+# - Use distinctive colors: purple for vodka, green for tea
+# - Add subtle glow or sparkle effects to make them attractive

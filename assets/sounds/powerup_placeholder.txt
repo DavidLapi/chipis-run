@@ -1,0 +1,12 @@
+# Placeholder for power-up collection sound effect
+# This file serves as a placeholder for the actual powerup.wav sound
+
+# Expected format: WAV or OGG
+# Duration: 0.3-0.8 seconds
+# Style: Positive, rewarding sound for collecting power-ups
+
+# TODO 4: Replace this placeholder with actual sound
+# - Record or find a positive collection sound effect
+# - Should feel rewarding and satisfying
+# - Consider magical or mystical theme to match power-up concept
+# - Different pitch/tone for different power-up types (optional)
