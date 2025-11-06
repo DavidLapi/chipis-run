@@ -1,236 +1,215 @@
-# Julia's Run 🏃‍♀️🔪
+# Julia's Run - Legacy Codebase Challenge 🏃‍♀️
 
-Un mini-juego arcade desarrollado en Python + Pygame para aprender Programación Orientada a Objetos.
+¡Bienvenido al equipo de desarrollo! Has sido asignado para trabajar en **Julia's Run**, un juego existente que necesita mantenimiento y mejoras.
 
-## 🎮 Historia
+## 🎯 Tu Misión
 
-Julia es una valiente aventurera que debe esquivar obstáculos que caen del cielo mientras recolecta power-ups especiales. Armada únicamente con cuchillos de lanzamiento y su agilidad, debe sobrevivir el mayor tiempo posible para conseguir la puntuación más alta.
+Este no es un proyecto desde cero. **Julia's Run** es un juego **funcional pero legacy** que ya está en producción. Tu trabajo es:
 
-## 🎯 Controles
+1. **🔍 Analizar** el código existente y entender cómo funciona
+2. **🐛 Encontrar** problemas y áreas de mejora
+3. **🚀 Implementar** nuevas características sin romper lo existente
+4. **♻️ Refactorizar** código problemático manteniendo la funcionalidad
 
-- **Flechas direccionales**: Mover a Julia
-- **Espacio**: Lanzar cuchillo (con cooldown)
-- **Enter**: Reiniciar juego (en pantalla de Game Over)
-- **P**: Pausar juego
-- **ESC**: Salir del juego
+## 🎮 ¿Qué es Julia's Run?
 
-## ⚡ Power-ups
+Un juego de supervivencia donde Julia debe esquivar cachopos que caen del cielo mientras lanza cuchillos para defenderse. El juego incluye power-ups, sistema de combos, efectos visuales y persistencia de puntuaciones.
 
-- **🍺 Vodka Boost**: Aumenta la velocidad de movimiento temporalmente
-- **🍵 Té Mágico**: Proporciona un escudo temporal contra colisiones
+### Características Actuales
+- ✅ Movimiento fluido del personaje
+- ✅ Sistema de colisiones
+- ✅ Power-ups (Vodka Boost y Té Mágico)
+- ✅ Sistema de combos y puntuaciones
+- ✅ Efectos visuales y de partículas
+- ✅ Sprites pixelart integrados
+- ✅ Persistencia de estadísticas
+- ✅ Estados de juego (menú, jugando, pausa, game over)
 
-## 🚀 Instalación rápida
-
-```bash
-# Crear entorno virtual
-make venv
-
-# Instalar dependencias
-make install
-
-# Ejecutar el juego
-make run
-```
-
-### Instalación manual (Windows)
-
-```powershell
-# Crear entorno virtual
-python -m venv .venv
-
-# Activar entorno virtual
-.venv\Scripts\activate
-
-# Instalar dependencias
-pip install -r requirements.txt
-
-# Ejecutar el juego
-python -m src.main
-```
-
-## 📚 Objetivos de aprendizaje
-
-Este proyecto está diseñado para estudiantes que han completado fundamentos de Python y están comenzando con POO. Incluye:
-
-- Clases y objetos simples
-- Herencia básica
-- Gestión de estados
-- Manejo de colisiones
-- Persistencia de datos (JSON)
-- Estructura de proyecto organizada
-
-## ✅ Checklist de TODOs para implementar
-
-- [ ] **TODO 1**: Añadir sistema de pausa con tecla P
-- [ ] **TODO 2**: Implementar barra visual del cooldown
-- [ ] **TODO 3**: Mejorar algoritmo de spawn de power-ups
-- [x] **TODO 4**: ✅ Añadir sprites personalizados y efectos sonoros
-- [ ] **TODO 5**: Implementar dificultad progresiva cada 10 puntos
-- [ ] **TODO 6**: Guardar historial de puntuaciones (top 5)
-- [ ] **TODO 7**: Añadir efectos de partículas al destruir obstáculos
-- [ ] **TODO 8**: Implementar diferentes tipos de obstáculos
-- [ ] **TODO 9**: Crear menú de opciones para ajustar volumen
-- [ ] **TODO 10**: Añadir animaciones de sprites
-
-## 🏆 Sistema de puntuación
-
-- **+1 punto**: Por cada obstáculo esquivado
-- **+5 puntos**: Por cada obstáculo destruido con cuchillo
-- **+10 puntos**: Por cada power-up recolectado
-- **Récord**: Se guarda automáticamente en `best_score.json`
-
-## 🎯 Rúbrica de evaluación (10 puntos)
-
-1. **Lógica de juego básica (2 pts)**: Movimiento, colisiones, vidas
-2. **POO y clases (2 pts)**: Implementación correcta de clases y métodos
-3. **Colisiones y power-ups (2 pts)**: Sistema de detección y efectos
-4. **Persistencia y HUD (2 pts)**: Guardado de datos y interfaz
-5. **Pulido y presentación (2 pts)**: Código limpio y funcionalidad completa
-
-## 🛠️ Estructura del proyecto
+## 🏗️ Arquitectura del Proyecto
 
 ```
 julias_run/
-├── README.md
-├── requirements.txt
-├── .gitignore
-├── Makefile
 ├── src/
-│   ├── main.py          # Punto de entrada del juego
-│   ├── settings.py      # Configuración y constantes
-│   ├── entities.py      # Clases de entidades del juego
-│   ├── abilities.py     # Sistema de power-ups y cooldowns
-│   ├── game_states.py   # Estados del juego (menú, juego, game over)
-│   └── utils.py         # Funciones auxiliares
+│   ├── main.py          # 🎮 Punto de entrada y game loop principal
+│   ├── entities.py      # 👾 Clases de entidades (Player, Obstacle, etc.)
+│   ├── abilities.py     # ⚡ Sistema de habilidades y efectos
+│   ├── game_states.py   # 🎯 Gestión de estados del juego
+│   ├── settings.py      # ⚙️ Configuración y constantes
+│   └── utils.py         # 🛠️ Funciones auxiliares
 ├── assets/
-│   ├── sprites/         # Imágenes del juego
-│   │   ├── julia_pixelart.jpg    # Sprite del personaje principal
-│   │   ├── cachopo_pixelart.jpg  # Sprite de obstáculos
-│   │   ├── knife__pixelart.jpg   # Sprite de cuchillos
-│   │   └── vodka_pixelart.jpg    # Sprite de power-ups
-│   └── sounds/          # Efectos de sonido
-└── tests/
-    └── test_utils.py    # Tests unitarios
+│   └── sprites/         # 🎨 Imágenes del juego
+└── game_stats.json      # 📊 Estadísticas persistentes
 ```
 
-## 🎨 Sistema de Sprites
+## 🚀 Setup Rápido
 
-El juego incluye un sistema completo de sprites que reemplaza los rectángulos de colores con gráficos pixelados:
+```bash
+# 1. Instalar dependencias
+pip install pygame
 
-### Características del Sistema de Sprites
+# 2. Ejecutar el juego
+python src/main.py
 
-**Carga Automática con Fallback:**
-- Cada entidad intenta cargar su sprite correspondiente
-- Si la imagen no existe, usa un rectángulo de color como fallback
-- Mensajes informativos en consola sobre el estado de carga
-
-**Sprites Disponibles:**
-- `julia_pixelart.jpg` - Personaje principal (Julia)
-- `cachopo_pixelart.jpg` - Obstáculos (Cachopos)
-- `knife__pixelart.jpg` - Proyectiles (Cuchillos)
-- `vodka_pixelart.jpg` - Power-ups (Vodka/Té)
-
-**Efectos Visuales Mejorados:**
-- Rotación de sprites (cuchillos girando, obstáculos cayendo)
-- Escalado dinámico (power-ups con efecto de pulso)
-- Volteo horizontal (Julia mirando izquierda/derecha)
-- Tintes de color (escudo, diferentes tipos de power-ups)
-
-**Optimización:**
-- `convert_alpha()` para mejor rendimiento
-- Escalado automático a dimensiones del juego
-- Preservación del centro durante rotaciones
-
-### Conceptos Educativos Cubiertos
-
-**Gestión de Archivos:**
-```python
-# Carga de sprites con gestión de errores
-sprite_path = os.path.join("assets", "sprites", "julia_pixelart.jpg")
-image = pygame.image.load(sprite_path)
-image = image.convert_alpha()  # Optimización
+# 3. Controles
+# ⬅️➡️⬆️⬇️ - Mover a Julia
+# ESPACIO - Lanzar cuchillo
+# P - Pausar
+# ESC - Salir
 ```
 
-**Transformaciones de Imagen:**
-```python
-# Escalado
-sprite = pygame.transform.scale(image, (width, height))
-# Rotación
-rotated = pygame.transform.rotate(sprite, angle)
-# Volteo
-flipped = pygame.transform.flip(sprite, True, False)
+## 🔍 Análisis del Código - Tu Primer Día
+
+### Paso 1: Ejecuta y Juega
+Antes de tocar código, **ejecuta el juego** y juega al menos 5 minutos. Observa:
+- ¿Qué funciona bien?
+- ¿Qué se siente extraño o lento?
+- ¿Hay bugs evidentes?
+- ¿Qué mejorarías como jugador?
+
+### Paso 2: Mapeo de Arquitectura
+Explora estos archivos en orden:
+
+1. **`settings.py`** - Entiende las constantes del juego
+2. **`main.py`** - Sigue el game loop principal
+3. **`entities.py`** - Analiza las clases principales
+4. **`game_states.py`** - Comprende la máquina de estados
+
+### Paso 3: Preguntas Clave
+Mientras lees el código, pregúntate:
+
+- ❓ **¿Cómo se crean los obstáculos?** (Pista: busca `should_spawn_obstacle`)
+- ❓ **¿Dónde se detectan las colisiones?** (Pista: método `colliderect`)
+- ❓ **¿Cómo funciona el sistema de combos?** (Pista: clase `ComboSystem`)
+- ❓ **¿Qué hace el sistema de sprites?** (Pista: función `load_sprite_with_fallback`)
+
+## 🐛 Problemas Conocidos (Issues)
+
+El juego funciona, pero tiene algunos problemas que necesitan atención:
+
+### 🔥 Críticos
+- **Performance**: El juego se ralentiza con muchos obstáculos en pantalla
+- **Memory leak**: Las partículas no se limpian correctamente
+- **Collision bugs**: Colisiones imprecisas en esquinas
+
+### ⚠️ Importantes  
+- **Code smell**: La clase `Player` es demasiado grande (>200 líneas)
+- **Magic numbers**: Muchos números hardcodeados sin constantes
+- **No tests**: Cero cobertura de testing
+
+### 💡 Mejoras Deseadas
+- **Nuevos power-ups**: Escudo temporal, slow-motion
+- **Niveles**: Sistema de progresión por niveles
+- **Audio**: Efectos de sonido y música
+- **Leaderboard**: Top 10 mejores puntuaciones
+- **Mobile**: Controles táctiles
+
+## 🎯 Retos Sugeridos (Por Dificultad)
+
+### 🟢 Beginner
+1. **Encuentra y documenta** 3 magic numbers y conviértelos en constantes
+2. **Añade un nuevo color** de obstáculo con comportamiento diferente  
+3. **Mejora los mensajes de debug** para ser más informativos
+4. **Crea un power-up nuevo** basado en los existentes
+
+### 🟡 Intermediate
+5. **Refactoriza** la clase `Player` dividiéndola en componentes más pequeños
+6. **Implementa un sistema básico de testing** para colisiones
+7. **Optimiza el renderizado** para mejorar FPS con muchos objetos
+8. **Añade persistencia** para configuraciones de usuario
+
+### 🔴 Advanced
+9. **Implementa un sistema de niveles** con dificultad progresiva
+10. **Crea un editor de niveles** visual para diseñar pantallas
+11. **Añade networking** para multijugador local
+12. **Implementa shaders** para efectos visuales avanzados
+
+## 🧪 Testing Your Changes
+
+```bash
+# Ejecutar el juego después de cambios
+python src/main.py
+
+# Verificar que no rompiste nada:
+# 1. ¿El juego inicia correctamente?
+# 2. ¿Las colisiones funcionan?
+# 3. ¿Los power-ups aparecen?
+# 4. ¿Se puede pausar y reanudar?
+# 5. ¿Las puntuaciones se guardan?
 ```
 
-**Renderizado Avanzado:**
-```python
-# Dibujar sprite vs rectángulo
-screen.blit(sprite, position)  # Sprite
-pygame.draw.rect(screen, color, rect)  # Fallback
+## 📚 Recursos de Aprendizaje
+
+### Python Game Development
+- [Pygame Documentation](https://www.pygame.org/docs/)
+- [Real Python - Game Development](https://realpython.com/pygame-a-primer/)
+
+### Clean Code & Refactoring
+- [Refactoring Guru](https://refactoring.guru/)
+- [Clean Code principles](https://blog.cleancoder.com/)
+
+### Game Development Patterns
+- [Game Programming Patterns](https://gameprogrammingpatterns.com/)
+- [Entity-Component-System](https://www.gamedev.net/tutorials/programming/general-and-gameplay-programming/understanding-component-entity-systems-r3013/)
+
+## 🤝 Contributing Guidelines
+
+### Before Making Changes
+1. **Create a new branch**: `git checkout -b feature/your-feature-name`
+2. **Run the game** to ensure it works before your changes
+3. **Document your changes** in comments
+
+### Code Style
+- Use **descriptive variable names** (`player_speed` not `ps`)
+- **Comment complex logic** - future you will thank you
+- **Keep functions small** - one responsibility per function
+- **Use constants** instead of magic numbers
+
+### Commit Messages
+```bash
+git commit -m "fix: correct collision detection in corners"
+git commit -m "feat: add shield power-up with 5-second duration"
+git commit -m "refactor: split Player class into smaller components"
 ```
 
-## 📖 Referencias útiles
+## 🎖️ Achievement System
 
-- [Documentación de Pygame](https://www.pygame.org/docs/)
-- [Tutorial de POO en Python](https://docs.python.org/3/tutorial/classes.html)
-- [Manejo de colisiones en Pygame](https://www.pygame.org/docs/ref/rect.html)
+Tracks your progress in understanding and improving the codebase:
 
-## 🤝 Contribuir
+- 🔍 **Code Detective** - Find and fix 3 bugs
+- 🧹 **Refactor Master** - Successfully refactor a large class
+- ⚡ **Performance Guru** - Improve FPS by 20%
+- 🎨 **Feature Creator** - Add a new game mechanic
+- 🧪 **Test Champion** - Achieve 50% test coverage
+- 📚 **Documentation Hero** - Document all major functions
 
-Este es un proyecto educativo. Se anima a los estudiantes a:
+## ❓ Getting Help
 
-1. Completar los TODOs enumerados
-2. Experimentar con nuevas funcionalidades
-3. Mejorar el código existente
-4. Añadir tests para las nuevas funciones
+### Stuck? Try This Order:
+1. **Read the code** - Often the answer is there
+2. **Debug print statements** - See what's happening
+3. **Draw on paper** - Visualize the game flow
+4. **Google the error** - Someone else had this problem
+5. **Ask for help** - But explain what you tried first
 
-¡Buena suerte y que disfrutes programando! 🎮✨
+### Common Questions
 
-## 👥 Autoría y Licencia
+**Q: ¿Dónde empiezo si quiero añadir una nueva característica?**
+A: Busca características similares existentes y úsalas como template.
 
-### ✍️ Autoría
-Creado y diseñado por: **Anaïs Rodríguez Villanueva**  
-Contacto: [GitHub @Anais-RV](https://github.com/Anais-RV)
+**Q: ¿Cómo debuggeo problemas de colisión?**
+A: Activa el modo debug en `settings.py` para ver las hitboxes.
 
-Este material educativo ha sido desarrollado de forma independiente y vocacional con el objetivo de proporcionar recursos de calidad para el aprendizaje de Python. Representa cientos de horas de trabajo en diseño pedagógico, creación de contenidos y desarrollo de ejercicios progresivos.
+**Q: ¿Puedo cambiar la arquitectura completamente?**
+A: Mejor refactoriza gradualmente. Los cambios grandes rompen cosas.
 
-### 📄 Licencia y Uso
-Este proyecto está licenciado bajo **MIT License** (ver `LICENSE`).
+---
 
-Esto significa que puedes:
+## 🎮 ¡Que comience la aventura!
 
-✅ Usar este material para aprender o enseñar Python  
-✅ Compartir el repositorio con estudiantes  
-✅ Adaptar los ejercicios para tus necesidades  
-✅ Hacer fork del proyecto  
+Recuerda: **Este es código real** que funciona. Tu objetivo no es reescribirlo desde cero, sino **mejorarlo incrementalmente** como harías en cualquier trabajo de desarrollo.
 
-Con la condición de:
+**¡Diviértete explorando y mejorando Julia's Run!** 🚀
 
-⚠️ Mantener la atribución de autoría original en todos los materiales derivados  
-⚠️ Incluir una referencia a este repositorio: [github.com/Anais-RV/python-fundamentos](https://github.com/Anais-RV/python-fundamentos)  
-⚠️ Mencionar a Anaïs Rodríguez Villanueva como autora original  
+---
 
-**Uso comercial:**  
-Si deseas usar este material en contextos comerciales (cursos de pago, bootcamps, formaciones empresariales), por favor:
-
-- Mantén visiblemente la atribución de autoría  
-- Considera contactar para una mención o colaboración  
-- Respeta el espíritu educativo y vocacional del proyecto  
-
-### 🤝 Contribuciones
-Las contribuciones son bienvenidas y apreciadas. Al contribuir, aceptas que:
-
-- Tu contribución se licenciará bajo los mismos términos (MIT)  
-- La autoría original del proyecto se mantiene como Anaïs Rodríguez Villanueva  
-- Las contribuciones significativas serán reconocidas en `CONTRIBUTING.md`  
-
-Por favor, consulta `CONTRIBUTING.md` para más detalles sobre cómo participar en el proyecto.
-
-### 💝 Reconocimientos
-Este proyecto es un esfuerzo educativo independiente creado con dedicación para la comunidad de aprendizaje de Python. Si te ha sido útil, considera:
-
-⭐ Dar una estrella al repositorio  
-🔄 Compartir con otros estudiantes  
-💬 Proporcionar feedback o mejoras  
-📢 Mencionar el proyecto si lo usas en tus clases  
-
-© 2025 Anaïs Rodríguez Villanueva. Material educativo de código abierto bajo licencia MIT.
+*💡 Tip: El mejor código es el que otros desarrolladores pueden entender y mantener fácilmente.*
