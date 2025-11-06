@@ -49,16 +49,22 @@ python src/main.py
 
 ## 📚 Guía de Aprendizaje POO
 
-### 🏁 Paso 1: Juega y Observa (15 min)
-**Antes de ver código**, juega al menos 15 minutos y pregúntate:
+### 🏁 Paso 1: Fundamentos POO (45 min)
+📓 **`docs/00_poo_introduccion.ipynb`** - **¡Empieza aquí!**
+- Conceptos básicos de POO con ejercicios interactivos
+- Ejemplos prácticos con nombres de la clase
+- Preparación perfecta antes del código del juego
+
+### 🎮 Paso 2: Juega y Observa (15 min)
+**Después del notebook**, juega al menos 15 minutos y pregúntate:
 - ¿Qué elementos ves en pantalla?
 - ¿Cómo interactúan entre sí?
-- ¿Qué comportamientos observas?
+- ¿Reconoces los conceptos del notebook?
 
-### 🔍 Paso 2: Explora la Estructura (30 min)
+### 🔍 Paso 3: Explora la Estructura (30 min)
 ```
 julias_run/
-├── src/             # 💻 Código principal → Empieza aquí
+├── src/             # 💻 Código principal → Ahora puedes entenderlo
 ├── docs/            # 📚 Guías de aprendizaje  
 ├── assets/          # 🎨 Sprites del juego
 └── tests/           # 🧪 Pruebas (para nivel avanzado)
@@ -70,9 +76,9 @@ julias_run/
 3. 👾 `src/entities.py` - **¡Las clases principales!**
 4. 🎮 `src/main.py` - Cómo se ejecuta todo
 
-### 🧩 Paso 3: Identifica Conceptos POO (45 min)
+### 🧩 Paso 4: Identifica Conceptos POO (45 min)
 
-**Abre `src/entities.py` y busca:**
+**Abre `src/entities.py` y busca** (¡ahora los reconocerás del notebook!):
 
 #### 🏗️ **Clases (Plantillas)**
 ```python
@@ -101,7 +107,7 @@ def draw(self, screen): # Dibujar en pantalla
 def take_damage(self):  # Recibir daño
 ```
 
-### 🎓 Paso 4: Sigue las Guías Didácticas
+### 🎓 Paso 5: Sigue las Guías Didácticas
 1. 📖 **[docs/01_intro_poo_con_julias_run.md](docs/01_intro_poo_con_julias_run.md)** - Clase guiada con ejercicios
 2. 🚀 **[docs/02_reto_mejoras.md](docs/02_reto_mejoras.md)** - Retos y evaluación
 

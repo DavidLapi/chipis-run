@@ -4,7 +4,10 @@ Esta carpeta contiene las **guías de aprendizaje** para entender y mejorar Juli
 
 ## 📑 Contenido
 
-### 📖 Guías Principales
+### � Introducción Interactiva
+- **`00_poo_introduccion.ipynb`** - Notebook interactivo con fundamentos de POO
+
+### �📖 Guías Principales  
 - **`01_intro_poo_con_julias_run.md`** - Introducción práctica a POO con ejemplos del juego
 - **`02_reto_mejoras.md`** - Ejercicios y rúbrica de evaluación
 
@@ -27,10 +30,11 @@ Al completar estas guías, el alumnado será capaz de:
 4. Fomentar experimentación y creatividad
 
 ### Para Alumnado
-1. **Leer primero** → `01_intro_poo_con_julias_run.md`
-2. **Practicar** → Ejecutar el juego y explorar código
-3. **Mejorar** → Seguir `02_reto_mejoras.md`
-4. **Documentar** → Crear tu propio README de mejoras
+1. **Ejecutar primero** → `00_poo_introduccion.ipynb` (Jupyter notebook)
+2. **Leer después** → `01_intro_poo_con_julias_run.md`
+3. **Practicar** → Ejecutar el juego y explorar código
+4. **Mejorar** → Seguir `02_reto_mejoras.md`
+5. **Documentar** → Crear tu propio README de mejoras
 
 ## 💡 Filosofía Pedagógica
 
