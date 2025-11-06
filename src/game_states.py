@@ -19,7 +19,7 @@ Referencias útiles:
 """
 
 import pygame
-from .settings import *
+from settings import *
 
 class GameStateManager:
     """
@@ -182,7 +182,7 @@ class PlayingState:
                 if event.key == KEY_SPACE:
                     # Lanzar cuchillo si no hay cooldown
                     if knife_cooldown.is_ready():
-                        from .entities import Knife  # Import local para evitar circular
+                        from entities import Knife  # Import local para evitar circular
                         new_knife = Knife(player.rect)
                         new_knives.append(new_knife)
                         knife_cooldown.start_cooldown()

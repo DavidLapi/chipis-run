@@ -64,7 +64,7 @@ Este proyecto está diseñado para estudiantes que han completado fundamentos de
 - [ ] **TODO 1**: Añadir sistema de pausa con tecla P
 - [ ] **TODO 2**: Implementar barra visual del cooldown
 - [ ] **TODO 3**: Mejorar algoritmo de spawn de power-ups
-- [ ] **TODO 4**: Añadir sprites personalizados y efectos sonoros
+- [x] **TODO 4**: ✅ Añadir sprites personalizados y efectos sonoros
 - [ ] **TODO 5**: Implementar dificultad progresiva cada 10 puntos
 - [ ] **TODO 6**: Guardar historial de puntuaciones (top 5)
 - [ ] **TODO 7**: Añadir efectos de partículas al destruir obstáculos
@@ -104,9 +104,68 @@ julias_run/
 │   └── utils.py         # Funciones auxiliares
 ├── assets/
 │   ├── sprites/         # Imágenes del juego
+│   │   ├── julia_pixelart.jpg    # Sprite del personaje principal
+│   │   ├── cachopo_pixelart.jpg  # Sprite de obstáculos
+│   │   ├── knife__pixelart.jpg   # Sprite de cuchillos
+│   │   └── vodka_pixelart.jpg    # Sprite de power-ups
 │   └── sounds/          # Efectos de sonido
 └── tests/
     └── test_utils.py    # Tests unitarios
+```
+
+## 🎨 Sistema de Sprites
+
+El juego incluye un sistema completo de sprites que reemplaza los rectángulos de colores con gráficos pixelados:
+
+### Características del Sistema de Sprites
+
+**Carga Automática con Fallback:**
+- Cada entidad intenta cargar su sprite correspondiente
+- Si la imagen no existe, usa un rectángulo de color como fallback
+- Mensajes informativos en consola sobre el estado de carga
+
+**Sprites Disponibles:**
+- `julia_pixelart.jpg` - Personaje principal (Julia)
+- `cachopo_pixelart.jpg` - Obstáculos (Cachopos)
+- `knife__pixelart.jpg` - Proyectiles (Cuchillos)
+- `vodka_pixelart.jpg` - Power-ups (Vodka/Té)
+
+**Efectos Visuales Mejorados:**
+- Rotación de sprites (cuchillos girando, obstáculos cayendo)
+- Escalado dinámico (power-ups con efecto de pulso)
+- Volteo horizontal (Julia mirando izquierda/derecha)
+- Tintes de color (escudo, diferentes tipos de power-ups)
+
+**Optimización:**
+- `convert_alpha()` para mejor rendimiento
+- Escalado automático a dimensiones del juego
+- Preservación del centro durante rotaciones
+
+### Conceptos Educativos Cubiertos
+
+**Gestión de Archivos:**
+```python
+# Carga de sprites con gestión de errores
+sprite_path = os.path.join("assets", "sprites", "julia_pixelart.jpg")
+image = pygame.image.load(sprite_path)
+image = image.convert_alpha()  # Optimización
+```
+
+**Transformaciones de Imagen:**
+```python
+# Escalado
+sprite = pygame.transform.scale(image, (width, height))
+# Rotación
+rotated = pygame.transform.rotate(sprite, angle)
+# Volteo
+flipped = pygame.transform.flip(sprite, True, False)
+```
+
+**Renderizado Avanzado:**
+```python
+# Dibujar sprite vs rectángulo
+screen.blit(sprite, position)  # Sprite
+pygame.draw.rect(screen, color, rect)  # Fallback
 ```
 
 ## 📖 Referencias útiles

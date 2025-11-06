@@ -23,11 +23,11 @@ import pygame
 import random
 
 # Importar nuestros módulos
-from .settings import *
-from .entities import Player, Obstacle, Knife, PowerUp, Enemy, Explosion, ScreenEffect
-from .abilities import CooldownTimer, PowerUpEffect, ParticleEffect, ComboSystem
-from .game_states import GameStateManager, MenuState, PlayingState, GameOverState, PausedState
-from .utils import (
+from settings import *
+from entities import Player, Obstacle, Knife, PowerUp, Enemy, Explosion, ScreenEffect
+from abilities import CooldownTimer, PowerUpEffect, ParticleEffect, ComboSystem
+from game_states import GameStateManager, MenuState, PlayingState, GameOverState, PausedState
+from utils import (
     load_best_score, save_best_score, should_spawn_obstacle, 
     should_spawn_powerup, get_random_powerup_type, get_difficulty_multiplier,
     debug_print, update_play_statistics, get_fps_color
@@ -519,7 +519,7 @@ class JuliasRunGame:
         """
         
         # Puntuación con formato mejorado
-        from .utils import format_score
+        from utils import format_score
         score_text = self.state_manager.font_medium.render(
             f"Puntuación: {format_score(self.player.score)}", True, WHITE
         )
