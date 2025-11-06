@@ -31,8 +31,8 @@ Julia debe esquivar **cachopos** (obstáculos) que caen del cielo mientras lanza
 ## 🚀 Inicio Rápido
 
 ```bash
-# 1. Clonar el repositorio
-git clone https://github.com/Anais-RV/julias-run.git
+# 1. Clonar el repositorio (rama dev lista para estudiantes)
+git clone -b dev https://github.com/Anais-RV/julias-run.git
 cd julias-run
 
 # 2. Instalar dependencias
@@ -43,6 +43,9 @@ make run
 # o alternativamente:
 python src/main.py
 ```
+
+> 💡 **Para Estudiantes**: Usa la rama `dev` que contiene el proyecto educativo optimizado y listo para trabajar.  
+> 📚 **Para Profesorado**: La rama `master` contiene la versión estable con documentación adicional.
 
 ## 📚 Guía de Aprendizaje POO
 
