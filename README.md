@@ -1,5 +1,9 @@
 # Julia's Run - Aprende POO con un Juego Real 🎮
 
+<div align="center">
+  <img src="images/julias_run.png" alt="Julia's Run - Juego educativo de POO" width="300"/>
+</div>
+
 > **Un proyecto educativo para aprender Programación Orientada a Objetos de forma práctica**
 
 ¡Bienvenido a **Julia's Run**! Este es un juego **completamente funcional** desarrollado en Python con Pygame, diseñado específicamente para enseñar conceptos de **Programación Orientada a Objetos (POO)** de manera práctica y divertida.
