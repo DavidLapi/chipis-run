@@ -1,19 +1,34 @@
 """
 entities.py - Entidades del juego Julia's Run
 
-Este archivo contiene todas las clases que representan los objetos del juego.
-Cada clase encapsula los datos (atributos) y comportamientos (métodos) de una entidad.
+📚 PROPÓSITO EDUCATIVO:
+Este archivo contiene todas las CLASES que representan los objetos del juego.
+Es el ejemplo perfecto para entender Programación Orientada a Objetos (POO).
 
-Conceptos de POO cubiertos:
-- Clases y objetos
-- Atributos de instancia
-- Métodos de instancia
-- Encapsulación
-- Uso de pygame.Rect para colisiones
+🧩 CONCEPTOS POO QUE VAS A VER:
+1. CLASES: Player, Obstacle, PowerUp, Knife (moldes/plantillas)
+2. OBJETOS: Cada enemigo específico, el jugador único (instancias)
+3. ATRIBUTOS: self.lives, self.rect, self.speed (características)
+4. MÉTODOS: update(), draw(), take_damage() (comportamientos)
+5. ENCAPSULACIÓN: Todo lo del jugador está en la clase Player
 
-Referencias útiles:
-- pygame.Rect: https://www.pygame.org/docs/ref/rect.html
-- pygame.draw: https://www.pygame.org/docs/ref/draw.html
+🎯 CÓMO LEER ESTE ARCHIVO:
+- Busca 'class' para encontrar las clases principales
+- Dentro de cada clase, 'def __init__' es el constructor
+- Los 'self.' son atributos (características del objeto)
+- Los 'def nombre()' son métodos (acciones que puede hacer)
+
+💡 PREGÚNTATE MIENTRAS LEES:
+- ¿Qué características tiene esta entidad?
+- ¿Qué acciones puede realizar?
+- ¿Por qué está todo junto en una clase?
+- ¿Cómo se relaciona con las otras clases?
+
+🔍 MEJORAS SUGERIDAS PARA ALUMNADO:
+- Añadir más tipos de power-ups
+- Crear nuevos tipos de obstáculos
+- Implementar animaciones más complejas
+- Mejorar los efectos visuales
 """
 
 import pygame
@@ -102,34 +117,52 @@ def create_fallback_sprite(color, width, height):
 
 class Player:
     """
-    Esta clase representa al jugador (Julia).
+    🎮 CLASE PLAYER - Representa al personaje principal (Julia)
     
-    Atributos:
-    - rect: Rectángulo para posición y colisiones (pygame.Rect)
-    - lives: Número de vidas restantes
-    - score: Puntuación actual
-    - speed: Velocidad de movimiento actual
-    - has_shield: Si tiene escudo activo del té mágico
+    📚 CONCEPTOS POO QUE APRENDERÁS:
     
-    Métodos:
-    - move(): Actualiza la posición según las teclas presionadas
-    - draw(): Dibuja al jugador en la pantalla
-    - take_damage(): Reduce una vida
-    - reset_position(): Vuelve a la posición inicial
+    🏗️ ENCAPSULACIÓN:
+    Todos los datos y comportamientos del jugador están dentro de esta clase.
+    No hay variables globales sueltas, todo está organizado.
+    
+    📦 ATRIBUTOS (lo que "TIENE" o "ES" el jugador):
+    - lives: ¿Cuántas vidas le quedan?
+    - score: ¿Cuántos puntos ha conseguido?  
+    - rect: ¿Dónde está en la pantalla?
+    - speed: ¿Qué tan rápido se mueve?
+    - has_shield: ¿Tiene protección activa?
+    
+    ⚡ MÉTODOS (lo que "HACE" el jugador):
+    - move(): ¿Cómo se mueve con las teclas?
+    - draw(): ¿Cómo se dibuja en pantalla?
+    - take_damage(): ¿Qué pasa cuando le hacen daño?
+    
+    🤔 PREGUNTA CLAVE:
+    ¿Por qué usar una clase en lugar de variables sueltas?
+    Respuesta: Organización, reutilización y mantenimiento del código.
+    
+    🔍 Mejora sugerida: Esta clase podría dividirse en componentes más pequeños
+    (PlayerMovement, PlayerGraphics, PlayerState) para mejor organización.
     """
     
     def __init__(self):
-        """Constructor de la clase Player.
-        Inicializa todos los atributos del jugador."""
+        """
+        🏗️ CONSTRUCTOR - Cómo se "construye" un jugador
         
-        # pygame.Rect(x, y, width, height) - rectángulo para posición y colisiones
+        El método __init__ se ejecuta automáticamente cuando haces:
+        player = Player()  # ¡Aquí se ejecuta este método!
+        
+        📦 Todos los self.algo son ATRIBUTOS del objeto que se está creando.
+        """
+        
+        # 📍 POSICIÓN Y TAMAÑO - pygame.Rect es perfecto para colisiones
         self.rect = pygame.Rect(PLAYER_START_X, PLAYER_START_Y, PLAYER_WIDTH, PLAYER_HEIGHT)
         
-        # Estado del jugador
-        self.lives = PLAYER_LIVES
-        self.score = 0
-        self.speed = PLAYER_SPEED
-        self.has_shield = False
+        # 🎮 ESTADO DEL JUEGO
+        self.lives = PLAYER_LIVES           # Empieza con vidas completas
+        self.score = 0                      # Puntuación inicial
+        self.speed = PLAYER_SPEED           # Velocidad de movimiento
+        self.has_shield = False             # Sin escudo al inicio
         
         # === CARGA DE SPRITE PARA JULIA ===
         # Intentar cargar sprite de Julia
@@ -158,43 +191,55 @@ class Player:
     
     def move(self, keys_pressed):
         """
-        Mueve al jugador según las teclas presionadas.
+        ⚡ MÉTODO MOVE - Cómo se mueve el jugador
+        
+        📚 CONCEPTOS QUE VAS A VER:
+        - Parámetros: keys_pressed (información externa que necesita el método)
+        - self: Referencia al objeto actual (esta instancia específica de Player)
+        - Modificación de atributos: self.rect.x, self.speed
+        - Lógica condicional: if para detectar teclas presionadas
+        
+        🤔 PREGUNTA: ¿Por qué es un método y no una función suelta?
+        Respuesta: Porque necesita acceso a los atributos del jugador (self.rect, self.speed)
         
         Args:
-            keys_pressed: Diccionario de teclas presionadas (pygame.key.get_pressed())
+            keys_pressed: Diccionario con el estado de todas las teclas del teclado
         """
         
-        # ✅ IMPLEMENTADO: Actualizar animación
+        # 🎬 ANIMACIÓN: Actualizar frame de sprite
         self.animation_timer += 1
         if self.animation_timer >= SPRITE_ANIMATION_SPEED:
             self.sprite_frame = (self.sprite_frame + 1) % 4  # 4 frames de animación
             self.animation_timer = 0
         
-        # ✅ IMPLEMENTADO: Actualizar timers de efectos
+        # ⏰ EFECTOS TEMPORALES: Reducir timers
         if self.hit_flash_timer > 0:
             self.hit_flash_timer -= 1
         if self.invulnerability_timer > 0:
             self.invulnerability_timer -= 1
         
-        # Variable para detectar si se está moviendo (para animación)
+        # 🏃 DETECCIÓN DE MOVIMIENTO (para animaciones)
         is_moving = False
         
-        # Movimiento horizontal
+        # ⬅️ MOVIMIENTO HORIZONTAL
+        # 🔍 Mejora sugerida: Podría extraerse a un método separate_horizontal_movement()
         if keys_pressed[KEY_LEFT] and self.rect.left > 0:
-            self.rect.x -= self.speed
-            self.facing_direction = -1  # Mirando hacia la izquierda
-            is_moving = True
-        if keys_pressed[KEY_RIGHT] and self.rect.right < WINDOW_WIDTH:
-            self.rect.x += self.speed
-            self.facing_direction = 1   # Mirando hacia la derecha
+            self.rect.x -= self.speed              # Mover hacia la izquierda
+            self.facing_direction = -1             # Recordar dirección para sprite
             is_moving = True
             
-        # Movimiento vertical
-        if keys_pressed[KEY_UP] and self.rect.top > 0:
-            self.rect.y -= self.speed
+        if keys_pressed[KEY_RIGHT] and self.rect.right < WINDOW_WIDTH:
+            self.rect.x += self.speed              # Mover hacia la derecha  
+            self.facing_direction = 1              # Recordar dirección para sprite
             is_moving = True
+            
+        # ⬆️⬇️ MOVIMIENTO VERTICAL
+        if keys_pressed[KEY_UP] and self.rect.top > 0:
+            self.rect.y -= self.speed              # Mover hacia arriba
+            is_moving = True
+            
         if keys_pressed[KEY_DOWN] and self.rect.bottom < WINDOW_HEIGHT:
-            self.rect.y += self.speed
+            self.rect.y += self.speed              # Mover hacia abajo
             is_moving = True
         
         # ✅ IMPLEMENTADO: Resetear animación si no se mueve
@@ -312,30 +357,67 @@ class Player:
 
 class Obstacle:
     """
-    Esta clase representa un obstáculo que cae del cielo.
+    🍖 CLASE OBSTACLE - Representa un cachopo (obstáculo) que cae
     
-    Los obstáculos aparecen en la parte superior de la pantalla
-    y caen hacia abajo. Si tocan al jugador, le hacen daño.
-    Si salen de la pantalla por abajo, dan puntos por ser esquivados.
+    📚 CONCEPTOS POO QUE APRENDERÁS:
+    
+    🎲 VARIEDAD EN OBJETOS:
+    Aunque todos son "Obstacle", cada objeto puede ser diferente:
+    - Unos son rápidos (fast)
+    - Otros son grandes (big)  
+    - Algunos son normales (normal)
+    ¡Misma clase, comportamientos diferentes!
+    
+    🏗️ CONSTRUCTOR INTELIGENTE:
+    El __init__ usa random.choice() para crear variedad automáticamente.
+    Cada obstáculo que se crea es único y aleatorio.
+    
+    📦 ATRIBUTOS CLAVE:
+    - rect: Posición y tamaño (fundamental para colisiones)
+    - speed: Velocidad de caída (varía según el tipo)
+    - obstacle_type: 'normal', 'fast' o 'big'
+    - color: Color visual (diferente por tipo)
+    
+    ⚡ MÉTODOS PRINCIPALES:
+    - update(): Se mueve hacia abajo cada frame
+    - draw(): Se dibuja con efectos visuales
+    
+    🤔 PREGUNTA CLAVE:
+    ¿Por qué no hacer 3 clases separadas (ObstaculoRapido, ObstaculoGrande)?
+    Respuesta: Comparten mucho comportamiento común. Mejor usar tipos.
+    
+    🔍 Mejora sugerida: El método __init__ es largo. Se podría dividir en 
+    métodos como _setup_fast_obstacle(), _setup_big_obstacle().
     """
     
     def __init__(self, difficulty_multiplier=1.0):
-        """Constructor del obstáculo. Aparece en posición aleatoria en la parte superior."""
+        """
+        🏗️ CONSTRUCTOR - Crea un obstáculo aleatorio
         
-        # Posición aleatoria en X, fija en Y (parte superior)
+        📚 CONCEPTOS IMPORTANTES:
+        - Parámetros opcionales: difficulty_multiplier=1.0
+        - random.choice(): Selección aleatoria de tipos
+        - Lógica condicional: if/elif/else para comportamientos diferentes
+        - Cálculos matemáticos: Ajustar velocidad según dificultad
+        
+        Args:
+            difficulty_multiplier: Multiplicador de dificultad (por defecto 1.0)
+        """
+        
+        # 📍 POSICIÓN INICIAL - Aparece arriba en X aleatoria
         start_x = random.randint(0, WINDOW_WIDTH - OBSTACLE_WIDTH)
-        start_y = -OBSTACLE_HEIGHT  # Empieza justo arriba de la pantalla
+        start_y = -OBSTACLE_HEIGHT  # Arriba de la pantalla (invisible al inicio)
         
         self.rect = pygame.Rect(start_x, start_y, OBSTACLE_WIDTH, OBSTACLE_HEIGHT)
         
-        # ✅ IMPLEMENTADO: Diferentes tipos de obstáculos
+        # 🎲 TIPO ALEATORIO - ¡Aquí está la magia de la variedad!
         self.obstacle_type = random.choice(['normal', 'fast', 'big'])
         
-        # Ajustar propiedades según el tipo
+        # ⚙️ CONFIGURACIÓN SEGÚN TIPO - Cada tipo tiene características únicas
         if self.obstacle_type == 'fast':
             self.speed = int(OBSTACLE_SPEED * 1.5 * difficulty_multiplier)
             self.color = RED
-            # Los rápidos son más pequeños
+            # Los rápidos son más pequeños (más difíciles de esquivar)
             self.rect.width = OBSTACLE_WIDTH - 5
             self.rect.height = OBSTACLE_HEIGHT - 5
             

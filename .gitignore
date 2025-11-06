@@ -25,6 +25,8 @@ wheels/
 venv/
 ENV/
 env/
+Include/
+Lib/
 
 # IDE
 .vscode/
@@ -35,6 +37,7 @@ env/
 
 # Game data
 best_score.json
+game_stats.json
 
 # Testing
 .pytest_cache/
@@ -44,3 +47,8 @@ htmlcov/
 # OS
 .DS_Store
 Thumbs.db
+
+# Archivos de documentación que pueden crear confusión
+SOLUCIONES.md
+DEVELOPER_GUIDE.md
+BACKLOG.md

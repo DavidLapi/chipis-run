@@ -1,34 +1,54 @@
 """
 settings.py - Configuración del juego Julia's Run
 
-Este archivo contiene todas las constantes y configuraciones del juego.
-Es una buena práctica mantener todos los valores configurables en un solo lugar
-para facilitar el ajuste y mantenimiento del código.
+📚 PROPÓSITO EDUCATIVO:
+Este archivo demuestra la importancia de la ORGANIZACIÓN DEL CÓDIGO.
+En lugar de números "mágicos" dispersos por todo el código, 
+centralizamos toda la configuración en un solo lugar.
 
-Conceptos de programación cubiertos:
-- Constantes y variables globales
-- Organización del código
-- Configuración centralizada
+🎯 CONCEPTOS QUE APRENDERÁS:
+1. CONSTANTES: Variables que no cambian durante la ejecución
+2. NOMBRES DESCRIPTIVOS: PLAYER_SPEED vs speed o s
+3. ORGANIZACIÓN: Agrupación lógica por categorías
+4. MANTENIMIENTO: Un solo lugar para cambiar configuraciones
+
+💡 VENTAJAS DE ESTA ORGANIZACIÓN:
+- ✅ Fácil ajustar velocidades y tamaños
+- ✅ No hay números mágicos en el código
+- ✅ Otros programadores entienden qué hace cada valor
+- ✅ Cambios centralizados afectan todo el juego
+
+🔍 EXPERIMENTO SUGERIDO:
+Cambia algunos valores aquí y observa cómo afecta al juego:
+- Aumenta PLAYER_SPEED para un juego más rápido
+- Cambia OBSTACLE_SPEED para hacerlo más fácil/difícil
+- Modifica colores para personalizar el aspecto visual
+
+🤔 PREGUNTA CLAVE:
+¿Por qué no poner estos valores directamente en entities.py?
+Respuesta: Separación de responsabilidades y facilidad de mantenimiento.
 """
 
 import pygame
 
 # === CONFIGURACIÓN DE VENTANA ===
+# 🔍 Mejora sugerida: Estos valores podrían leerse de un archivo de configuración
 WINDOW_WIDTH = 800      # Ancho de la ventana en píxeles
-WINDOW_HEIGHT = 600     # Alto de la ventana en píxeles
-FPS = 60               # Cuadros por segundo (frames per second)
+WINDOW_HEIGHT = 600     # Alto de la ventana en píxeles  
+FPS = 60               # Cuadros por segundo - ¡Prueba cambiar a 30 o 120!
 
 # === COLORES (formato RGB) ===
-# Los colores se definen como tuplas de 3 valores (Red, Green, Blue)
-# Cada valor va de 0 a 255
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-BLUE = (0, 0, 255)
-YELLOW = (255, 255, 0)
-GRAY = (128, 128, 128)
-LIGHT_BLUE = (173, 216, 230)
+# 📚 Los colores se definen como tuplas de 3 valores (Red, Green, Blue)
+# Cada valor va de 0 (ausencia) a 255 (máximo)
+# 💡 Tip: Usa un color picker online para encontrar nuevos colores
+BLACK = (0, 0, 0)          # Ausencia total de color
+WHITE = (255, 255, 255)    # Máximo de todos los colores
+RED = (255, 0, 0)          # Solo rojo al máximo
+GREEN = (0, 255, 0)        # Solo verde al máximo
+BLUE = (0, 0, 255)         # Solo azul al máximo
+YELLOW = (255, 255, 0)     # Rojo + Verde = Amarillo
+GRAY = (128, 128, 128)     # Valor medio de todos
+LIGHT_BLUE = (173, 216, 230) # Combinación personalizada
 PURPLE = (128, 0, 128)
 
 # === CONFIGURACIÓN DEL JUGADOR ===

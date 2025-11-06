@@ -1,21 +1,37 @@
 """
 main.py - Punto de entrada de Julia's Run
 
-Este es el archivo principal del juego. Contiene el game loop principal
-y la inicialización de todos los sistemas del juego.
+📚 PROPÓSITO EDUCATIVO:
+Este archivo demuestra cómo se estructura un programa completo usando POO.
+Aquí ves la INTEGRACIÓN de todas las clases trabajando juntas.
 
-Conceptos de programación cubiertos:
-- Game loop (bucle principal del juego)
-- Inicialización de sistemas
-- Gestión de tiempo (FPS)
-- Integración de todos los módulos
+🎮 ¿QUÉ HACE ESTE ARCHIVO?
+- Inicializa Pygame y configura la ventana
+- Crea los objetos principales del juego (Player, listas de enemigos, etc.)
+- Ejecuta el GAME LOOP principal (update → draw → repeat)
+- Gestiona eventos de entrada (teclado, mouse, cerrar ventana)
 
-Para ejecutar el juego:
-    python -m src.main
+🧩 CONCEPTOS POO QUE VAS A VER:
+1. COMPOSICIÓN: JuliasRunGame "tiene" un Player, listas de Obstacles, etc.
+2. DELEGACIÓN: JuliasRunGame llama métodos de sus objetos (player.move(), obstacle.update())
+3. ENCAPSULACIÓN: Cada objeto se encarga de su propia lógica
+4. ABSTRACCIÓN: El game loop no necesita saber CÓMO se mueve el player, solo que se mueve
 
-Referencias útiles:
-- pygame.init(): https://www.pygame.org/docs/ref/pygame.html#pygame.init
-- pygame.time.Clock: https://www.pygame.org/docs/ref/time.html#pygame.time.Clock
+🔍 PREGUNTAS PARA REFLEXIONAR:
+- ¿Por qué JuliasRunGame es una clase y no solo funciones sueltas?
+- ¿Dónde se crean los objetos Player, Obstacle, etc.?
+- ¿Cómo interactúan las diferentes clases entre sí?
+- ¿Qué pasaría si quisieras añadir un nuevo tipo de entidad?
+
+🎯 FLUJO PRINCIPAL:
+1. __init__(): Crear e inicializar todos los objetos
+2. run(): Ejecutar el game loop infinito
+   - handle_events(): Procesar input del usuario
+   - update(): Actualizar estado de todos los objetos
+   - draw(): Dibujar todo en pantalla
+3. cleanup(): Limpiar recursos al salir
+
+Para ejecutar: python src/main.py
 """
 
 import sys
