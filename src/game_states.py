@@ -19,7 +19,7 @@ Referencias útiles:
 """
 
 import pygame
-from settings import *
+from .settings import *
 
 class GameStateManager:
     """

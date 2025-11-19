@@ -154,6 +154,7 @@ POWERUP_PULSE_SPEED = 4           # Velocidad del efecto de pulso en power-ups
 # SOUND_THROW = "assets/sounds/throw.wav"
 # SOUND_HIT = "assets/sounds/hit.wav"
 # SOUND_POWERUP = "assets/sounds/powerup.wav"
+# SOUND_BACKGROUND = "assets/sounds/grabacion_estandar.wav"
 
 # === NOTAS EDUCATIVAS ===
 """

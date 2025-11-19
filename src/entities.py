@@ -34,7 +34,7 @@ Es el ejemplo perfecto para entender Programación Orientada a Objetos (POO).
 import pygame
 import random
 import os
-from settings import *
+from .settings import *
 
 # === GESTIÓN DE SPRITES ===
 """

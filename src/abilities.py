@@ -16,7 +16,7 @@ Referencias útiles:
 
 import pygame
 import random
-from settings import *
+from .settings import *
 
 class CooldownTimer:
     """

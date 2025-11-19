@@ -38,12 +38,15 @@ import sys
 import pygame
 import random
 
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+
 # Importar nuestros módulos
-from settings import *
-from entities import Player, Obstacle, Knife, PowerUp, Enemy, Explosion, ScreenEffect
-from abilities import CooldownTimer, PowerUpEffect, ParticleEffect, ComboSystem
-from game_states import GameStateManager, MenuState, PlayingState, GameOverState, PausedState
-from utils import (
+from .settings import *
+from .entities import Player, Obstacle, Knife, PowerUp, Enemy, Explosion, ScreenEffect
+from .abilities import CooldownTimer, PowerUpEffect, ParticleEffect, ComboSystem
+from .game_states import GameStateManager, MenuState, PlayingState, GameOverState, PausedState
+from .utils import (
     load_best_score, save_best_score, should_spawn_obstacle, 
     should_spawn_powerup, get_random_powerup_type, get_difficulty_multiplier,
     debug_print, update_play_statistics, get_fps_color
