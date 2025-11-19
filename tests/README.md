@@ -56,7 +56,7 @@ def test_memory_usage():
 2. **Crear tu primer test**:
    ```python
    # test_basic.py
-   from src.entities import Player
+   from entities import Player
    
    def test_player_starts_with_three_lives():
        player = Player()
