@@ -20,7 +20,7 @@ Referencias útiles:
 import json
 import random
 import os
-from .settings import *
+from settings import *
 
 def load_best_score():
     """

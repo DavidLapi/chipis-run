@@ -19,7 +19,7 @@ Referencias útiles:
 """
 
 import pygame
-from .settings import *
+from settings import *
 
 class GameStateManager:
     """
@@ -45,6 +45,9 @@ class GameStateManager:
         self.font_large = pygame.font.Font(None, FONT_SIZE_LARGE)
         self.font_medium = pygame.font.Font(None, FONT_SIZE_MEDIUM)
         self.font_small = pygame.font.Font(None, FONT_SIZE_SMALL)
+
+        # Iniciar música con mixer
+        pygame.mixer.init()
     
     def change_state(self, new_state):
         """
@@ -250,7 +253,7 @@ class PlayingState:
                     return False
                 
                 # TODO 4: Añadir sonido de daño
-                # pygame.mixer.Sound(SOUND_HIT).play()
+                pygame.mixer.Sound(SOUND_HIT).play()
         
         # Detectar colisiones cuchillo-obstáculos
         for knife in knives[:]:

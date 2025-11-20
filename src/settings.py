@@ -151,10 +151,12 @@ POWERUP_PULSE_SPEED = 4           # Velocidad del efecto de pulso en power-ups
 # SPRITE_JULIA = "assets/sprites/julia.png"
 # SPRITE_KNIFE = "assets/sprites/knife.png"
 # SPRITE_POWERUP = "assets/sprites/powerup.png"
-# SOUND_THROW = "assets/sounds/throw.wav"
-# SOUND_HIT = "assets/sounds/hit.wav"
-# SOUND_POWERUP = "assets/sounds/powerup.wav"
-# SOUND_BACKGROUND = "assets/sounds/grabacion_estandar.wav"
+# SPRITE_BACKGROUND = "assets\sprites\background_image.png"
+SOUND_THROW = "assets\sounds\knife-throw-88751.wav"
+SOUND_HIT = "assets\sounds\hit_bonk.wav"
+SOUND_POWERUP = "assets\sounds\power-up-sparkle.wav"
+SOUND_BACKGROUND = "assets\sounds\grabacion_estandar.wav"
+SOUND_GAMEOVER = "assets\sounds\game-over.wav"
 
 # === NOTAS EDUCATIVAS ===
 """

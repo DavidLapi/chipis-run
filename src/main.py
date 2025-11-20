@@ -42,11 +42,11 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 # Importar nuestros módulos
-from .settings import *
-from .entities import Player, Obstacle, Knife, PowerUp, Enemy, Explosion, ScreenEffect
-from .abilities import CooldownTimer, PowerUpEffect, ParticleEffect, ComboSystem
-from .game_states import GameStateManager, MenuState, PlayingState, GameOverState, PausedState
-from .utils import (
+from settings import *
+from entities import Player, Obstacle, Knife, PowerUp, Enemy, Explosion, ScreenEffect
+from abilities import CooldownTimer, PowerUpEffect, ParticleEffect, ComboSystem
+from game_states import GameStateManager, MenuState, PlayingState, GameOverState, PausedState
+from utils import (
     load_best_score, save_best_score, should_spawn_obstacle, 
     should_spawn_powerup, get_random_powerup_type, get_difficulty_multiplier,
     debug_print, update_play_statistics, get_fps_color
@@ -70,6 +70,9 @@ class JuliasRunGame:
         
         # Inicializar Pygame
         pygame.init()
+
+        # Iniciar música con mixer
+        pygame.mixer.init()
         
         # Crear la ventana del juego
         self.screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
@@ -84,6 +87,14 @@ class JuliasRunGame:
         self.playing_state = PlayingState(self.state_manager)
         self.game_over_state = GameOverState(self.state_manager)
         self.paused_state = PausedState(self.state_manager)  # ✅ IMPLEMENTADO
+
+        # Música de fondo
+        pygame.mixer.music.load(SOUND_BACKGROUND)
+        pygame.mixer.music.play(-1)
+
+        # Efectos de sonido
+        sound_knife = pygame.mixer.Sound(SOUND_THROW)
+
         
         # Variables del juego
         self.running = True
@@ -432,6 +443,10 @@ class JuliasRunGame:
         # ✅ IMPLEMENTADO: Actualizar estadísticas de juego
         game_time = (pygame.time.get_ticks() / 1000.0) - self.game_start_time
         update_play_statistics(self.player.score, game_time)
+
+        # IMPLEMENTADO: Música de game over
+        pygame.mixer.music.load(SOUND_GAMEOVER)
+        pygame.mixer.music.play(0)
         
         # Guardar nueva mejor puntuación si corresponde
         if self.player.score > self.best_score:

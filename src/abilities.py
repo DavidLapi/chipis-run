@@ -16,7 +16,7 @@ Referencias útiles:
 
 import pygame
 import random
-from .settings import *
+from settings import *
 
 class CooldownTimer:
     """
@@ -168,7 +168,7 @@ class PowerUpEffect:
         player.speed = int(self.original_speed * VODKA_SPEED_MULTIPLIER)
         
         # TODO 4: Añadir efecto sonoro
-        # pygame.mixer.Sound(SOUND_POWERUP).play()
+        pygame.mixer.Sound(SOUND_POWERUP).play()
         
         print("¡Vodka Boost activado! Velocidad aumentada.")  # Debug
     
@@ -186,7 +186,7 @@ class PowerUpEffect:
         player.has_shield = True
         
         # TODO 4: Añadir efecto sonoro
-        # pygame.mixer.Sound(SOUND_POWERUP).play()
+        pygame.mixer.Sound(SOUND_POWERUP).play()
         
         print("¡Té Mágico activado! Escudo protector obtenido.")  # Debug
     
