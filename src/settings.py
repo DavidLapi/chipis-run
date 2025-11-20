@@ -149,14 +149,22 @@ POWERUP_PULSE_SPEED = 4           # Velocidad del efecto de pulso en power-ups
 
 # TODO 4: Añadir rutas de assets cuando estén disponibles
 # SPRITE_JULIA = "assets/sprites/julia.png"
+SPRITE_CHIPI_BUENO = "assets/sprites/chipi_bueno.png"
+SPRITE_CHIPI_MALO = "assets/sprites/chipi_malo.png"
 # SPRITE_KNIFE = "assets/sprites/knife.png"
+SPRITE_SPATULA = "assets/sprites/scraper.jpg"
 # SPRITE_POWERUP = "assets/sprites/powerup.png"
-# SPRITE_BACKGROUND = "assets\sprites\background_image.png"
-SOUND_THROW = "assets\sounds\knife-throw-88751.wav"
-SOUND_HIT = "assets\sounds\hit_bonk.wav"
-SOUND_POWERUP = "assets\sounds\power-up-sparkle.wav"
-SOUND_BACKGROUND = "assets\sounds\grabacion_estandar.wav"
-SOUND_GAMEOVER = "assets\sounds\game-over.wav"
+
+
+# SPRITE_BACKGROUND
+SPRITE_BACKGROUND = "assets/sprites/image_background.png"
+SPRITE_BACKGROUND_GAME = "assets/sprites/image_background_game.png"
+SOUND_THROW = "assets/sounds/knife-throw.wav"
+SOUND_HIT = "assets/sounds/hit_bonk.wav"
+SOUND_METAL_PIPE = "assets/sounds/metal-pipe.wav"
+SOUND_POWERUP = "assets/sounds/power-up-sparkle.wav"
+SOUND_BACKGROUND = "assets/sounds/grabacion_estandar.wav"
+SOUND_GAMEOVER = "assets/sounds/game-over.wav"
 
 # === NOTAS EDUCATIVAS ===
 """

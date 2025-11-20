@@ -6,6 +6,6 @@
 # Style: Simple knife or projectile graphic
 
 # TODO 4: Replace this placeholder with actual sprite
-# - Create or find a sprite for throwing knives
+# - Create or find a sprite for throwing knives (SPATULA)
 # - Ensure proper dimensions match KNIFE_WIDTH and KNIFE_HEIGHT in settings.py
 # - Consider adding multiple frames for rotation animation

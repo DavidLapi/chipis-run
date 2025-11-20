@@ -93,8 +93,9 @@ class JuliasRunGame:
         pygame.mixer.music.play(-1)
 
         # Efectos de sonido
-        sound_knife = pygame.mixer.Sound(SOUND_THROW)
-
+        sonido_throw = pygame.mixer.Sound(SOUND_THROW)
+        sonido_hit = pygame.mixer.Sound(SOUND_HIT)
+        sonido_powerup = pygame.mixer.Sound(SOUND_POWERUP)
         
         # Variables del juego
         self.running = True

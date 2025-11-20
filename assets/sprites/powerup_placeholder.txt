@@ -8,7 +8,7 @@
 # - tea_magic.png (green colored tea cup)
 
 # TODO 4: Replace this placeholder with actual sprites
-# - Create or find sprites for both power-up types
+# - Create or find sprites for both power-up types (CACHOPO_PIXELART.PNG Y COCACOLA_PIXELART.PNG)
 # - Ensure proper dimensions match POWERUP_WIDTH and POWERUP_HEIGHT in settings.py
 # - Use distinctive colors: purple for vodka, green for tea
 # - Add subtle glow or sparkle effects to make them attractive

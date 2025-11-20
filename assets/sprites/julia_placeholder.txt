@@ -7,6 +7,6 @@
 # Style: Pixel art or simple cartoon character
 
 # TODO 4: Replace this placeholder with actual sprite
-# - Create or find a sprite for Julia (main character)
+# - Create or find a sprite for Julia (main character) (CHIPI BUENO)
 # - Ensure proper dimensions match PLAYER_WIDTH and PLAYER_HEIGHT in settings.py
 # - Add transparency (alpha channel) for better visual integration

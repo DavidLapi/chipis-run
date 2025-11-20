@@ -40,14 +40,15 @@ class GameStateManager:
         self.current_state = STATE_MENU
         self.next_state = None
         
+        #Inicializamos música
+        pygame.mixer.init()
+
         # Inicializar fuentes para texto
         pygame.font.init()
         self.font_large = pygame.font.Font(None, FONT_SIZE_LARGE)
         self.font_medium = pygame.font.Font(None, FONT_SIZE_MEDIUM)
         self.font_small = pygame.font.Font(None, FONT_SIZE_SMALL)
 
-        # Iniciar música con mixer
-        pygame.mixer.init()
     
     def change_state(self, new_state):
         """
@@ -117,14 +118,21 @@ class MenuState:
         # Limpiar pantalla con color de fondo
         screen.fill(LIGHT_BLUE)
         
+        # TODO 9: Añadir demo visual o animación de fondo
+        # self.draw_background_animation(screen)
+        fondo = pygame.image.load(SPRITE_BACKGROUND).convert()
+        fondo_center = fondo.get_rect(center=(WINDOW_WIDTH//2, 350))
+        screen.blit(fondo, fondo_center)
+
+
         # Título del juego
-        title_text = self.state_manager.font_large.render("Julia's Run", True, BLACK)
-        title_rect = title_text.get_rect(center=(WINDOW_WIDTH//2, 150))
-        screen.blit(title_text, title_rect)
+        # title_text = self.state_manager.font_large.render("Chipi's Run", True, BLACK)
+        # title_rect = title_text.get_rect(center=(WINDOW_WIDTH//2, 150))
+        # screen.blit(title_text, title_rect)
         
         # Subtítulo
-        subtitle_text = self.state_manager.font_medium.render("🏃‍♀️🔪 Aventura Épica", True, PURPLE)
-        subtitle_rect = subtitle_text.get_rect(center=(WINDOW_WIDTH//2, 200))
+        subtitle_text = self.state_manager.font_medium.render("La Aventura Épica Jamás Vista", True, PURPLE)
+        subtitle_rect = subtitle_text.get_rect(center=(WINDOW_WIDTH//2, 230))
         screen.blit(subtitle_text, subtitle_rect)
         
         # Instrucciones
@@ -138,7 +146,7 @@ class MenuState:
             "Presiona ESPACIO para comenzar",
             "ESC para salir"
         ]
-        
+
         start_y = 280
         for i, instruction in enumerate(instructions):
             color = BLACK if instruction != "" else WHITE
@@ -146,8 +154,7 @@ class MenuState:
             text_rect = text.get_rect(center=(WINDOW_WIDTH//2, start_y + i * 25))
             screen.blit(text, text_rect)
         
-        # TODO 9: Añadir demo visual o animación de fondo
-        # self.draw_background_animation(screen)
+        
 
 
 class PlayingState:
@@ -191,7 +198,7 @@ class PlayingState:
                         knife_cooldown.start_cooldown()
                         
                         # TODO 4: Añadir sonido de lanzamiento
-                        # pygame.mixer.Sound(SOUND_THROW).play()
+                        pygame.mixer.Sound(SOUND_THROW).play()
                 
                 elif event.key == KEY_P:
                     # ✅ IMPLEMENTADO: Implementar pausa
@@ -252,8 +259,10 @@ class PlayingState:
                     # Game Over
                     return False
                 
-                # TODO 4: Añadir sonido de daño
-                pygame.mixer.Sound(SOUND_HIT).play()
+                    # TODO 4: Añadir sonido de daño
+                    # Iniciar música con mixer
+                else:
+                    pygame.mixer.Sound(SOUND_METAL_PIPE).play()
         
         # Detectar colisiones cuchillo-obstáculos
         for knife in knives[:]:
@@ -298,6 +307,7 @@ class PlayingState:
         
         # Limpiar pantalla
         screen.fill(BLACK)
+
         
         # Dibujar todas las entidades
         player.draw(screen)
