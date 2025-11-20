@@ -33,8 +33,8 @@ import pygame
 
 # === CONFIGURACIÓN DE VENTANA ===
 # 🔍 Mejora sugerida: Estos valores podrían leerse de un archivo de configuración
-WINDOW_WIDTH = 800      # Ancho de la ventana en píxeles
-WINDOW_HEIGHT = 600     # Alto de la ventana en píxeles  
+WINDOW_WIDTH = 850      # Ancho de la ventana en píxeles
+WINDOW_HEIGHT = 650     # Alto de la ventana en píxeles  
 FPS = 60               # Cuadros por segundo - ¡Prueba cambiar a 30 o 120!
 
 # === COLORES (formato RGB) ===

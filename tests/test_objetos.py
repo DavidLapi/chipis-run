@@ -30,3 +30,5 @@ def test_objects():
 
     print(f"Velocidad Chapa: {chapa.speed}") # Velocidad normal
     print(f"Velocidad Chipiron: {chipiron.speed}") # Muy rápido
+
+test_objects()
