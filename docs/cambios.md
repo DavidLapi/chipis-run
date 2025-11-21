@@ -26,3 +26,4 @@ Directorios modificados:
 
 Clase de POO de Anais
 Implementado sonido de vida perdida (bonk) en entities.py
+Agregar imagen chipi_malo como obstáculo (reemplazo de cachopo volador)

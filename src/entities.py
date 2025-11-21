@@ -435,7 +435,9 @@ class Obstacle:
         
         # === CARGA DE SPRITE PARA CACHOPO (OBSTÁCULO) ===
         # Intentar cargar sprite del cachopo
-        sprite_path = os.path.join("assets", "sprites", "cachopo_pixelart.jpg")
+        # sprite_path = os.path.join("assets", "sprites", "cachopo_pixelart.jpg")
+        # Cambiando imagen de cachopo a chipi_malo
+        sprite_path = os.path.join("assets", "sprites", "chipi_malo_pixelart.png") 
         self.sprite, self.using_fallback = load_sprite_with_fallback(
             sprite_path, 
             self.color,  # Color fallback específico del tipo
