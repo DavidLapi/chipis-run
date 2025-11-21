@@ -346,6 +346,7 @@ class Player:
             # ✅ IMPLEMENTADO: Período de invulnerabilidad tras recibir daño
             self.invulnerability_timer = 60  # 1 segundo de invulnerabilidad
             self.hit_flash_timer = 30        # 30 frames de parpadeo
+            pygame.mixer.Sound(SOUND_HIT).play() # Sonido de vida perdida (bonk)
             print(f"¡Vida perdida! Vidas restantes: {self.lives}")  # Debug educativo
             return self.lives > 0
     
