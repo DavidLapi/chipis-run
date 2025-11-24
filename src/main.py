@@ -45,7 +45,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 from settings import *
 from entities import Player, Obstacle, Knife, PowerUp, Enemy, Explosion, ScreenEffect
 from abilities import CooldownTimer, PowerUpEffect, ParticleEffect, ComboSystem
-from game_states import GameStateManager, MenuState, PlayingState, GameOverState, PausedState
+from game_states import GameStateManager, MenuState, PlayingState, GameOverState, PausedState, InstructionsState
 from utils import (
     load_best_score, save_best_score, should_spawn_obstacle, 
     should_spawn_powerup, get_random_powerup_type, get_difficulty_multiplier,
@@ -84,6 +84,7 @@ class JuliasRunGame:
         # Gestor de estados del juego
         self.state_manager = GameStateManager()
         self.menu_state = MenuState(self.state_manager)
+        self.instructions_state = InstructionsState(self.state_manager) # ✅ Implementado: lista de instrucciones
         self.playing_state = PlayingState(self.state_manager)
         self.game_over_state = GameOverState(self.state_manager)
         self.paused_state = PausedState(self.state_manager)  # ✅ IMPLEMENTADO
@@ -186,6 +187,9 @@ class JuliasRunGame:
         if current_state == STATE_MENU:
             return self.menu_state.handle_events(events)
         
+        elif current_state == STATE_INSTRUCTIONS:
+            return self.instructions_state.handle_events(events)
+        
         elif current_state == STATE_PLAYING:
             new_knives, continue_playing = self.playing_state.handle_events(
                 events, self.player, self.knife_cooldown
@@ -262,6 +266,10 @@ class JuliasRunGame:
             if not player_alive:
                 self.handle_game_over()
         
+        elif current_state == STATE_INSTRUCTIONS:
+            # ✅ IMPLEMENTADO: En caso de olvidar controles del juego mostrar instrucciones de nuevo
+            self.instructions_state.update()
+
         elif current_state == STATE_PAUSED:
             # ✅ IMPLEMENTADO: En pausa, solo actualizar efectos visuales
             self.paused_state.update()

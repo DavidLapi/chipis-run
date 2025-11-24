@@ -339,7 +339,7 @@ class Player:
             # ✅ IMPLEMENTADO: Efecto visual al perder escudo
             self.hit_flash_timer = 20  # 20 frames de parpadeo
             print("¡Escudo perdido!")  # Mensaje educativo para debug
-            pygame.mixer.Sound(SOUND_METAL_PIPE).play() # Sonido de escudo perdido (metal pipe)
+            pygame.mixer.Sound(SOUND_HIT).play() # Sonido de escudo perdido (bonk)
             return True
         else:
             # Pierde una vida

@@ -44,3 +44,5 @@ Testeos de objetos
 
 - 24/11/2025
 
+Probando clase InstructionsState
+Modificando en archivos main.py, game_states.py & settings.py para mostrar instrucciones antes de empezar el juego

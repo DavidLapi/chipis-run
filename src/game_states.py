@@ -4,6 +4,7 @@ game_states.py - Estados del juego Julia's Run
 Este archivo gestiona los diferentes estados o pantallas del juego:
 - Menú principal
 - Jugando
+- Instrucciones (Actual implementado)
 - Game Over
 - Pausa (TODO)
 
@@ -98,6 +99,8 @@ class MenuState:
             if event.type == pygame.KEYDOWN:
                 if event.key == KEY_SPACE or event.key == KEY_ENTER:
                     self.state_manager.change_state(STATE_PLAYING)
+                elif event.key == KEY_I:
+                    self.state_manager.change_state(STATE_INSTRUCTIONS)
                 elif event.key == KEY_ESCAPE:
                     return False  # Señal para salir del juego
         
@@ -124,13 +127,10 @@ class MenuState:
         fondo_center = fondo.get_rect(center=(WINDOW_WIDTH//2, 350))
         screen.blit(fondo, fondo_center)
 
-        # Título del juego
-        # title_text = self.state_manager.font_large.render("Chipi's Run", True, BLACK)
-        # title_rect = title_text.get_rect(center=(WINDOW_WIDTH//2, 150))
-        # screen.blit(title_text, title_rect)
+        # Título del juego (Viene en la imagen del fondo (BACKGROUND_IMAGE))
 
         # Version del juego
-        version_text = self.state_manager.font_small.render("V. 0.1.0", True, BLACK)
+        version_text = self.state_manager.font_small.render("V. 0.1.1", True, BLACK)
         version_rect = version_text.get_rect(right=650, top=180)
         screen.blit(version_text, version_rect)
         
@@ -140,6 +140,7 @@ class MenuState:
         screen.blit(subtitle_text, subtitle_rect)
         
         # Instrucciones
+        '''''''''''
         instructions = [
             "Controles:",
             "Flechas → Mover",
@@ -150,6 +151,7 @@ class MenuState:
             "Presiona ESPACIO para comenzar",
             "ESC para salir"
         ]
+        
 
         start_y = 280
         for i, instruction in enumerate(instructions):
@@ -157,24 +159,70 @@ class MenuState:
             text = self.state_manager.font_small.render(instruction, True, color)
             text_rect = text.get_rect(center=(WINDOW_WIDTH//2, start_y + i * 25))
             screen.blit(text, text_rect)
+        '''''''''''
+
+        # Comandos
+        comands = [
+            "Presiona tecla 'i' para manual de instrucciones",
+            "",
+            "Presiona ESPACIO para comenzar",
+            "ESC para salir"
+        ]
+
+        start_y = 370
+        for i, comand in enumerate(comands):
+            color = BLACK if comand != "" else WHITE
+            text = self.state_manager.font_medium.render(comand, True, color)
+            text_rect = text.get_rect(center=(WINDOW_WIDTH//2, start_y + i * 25))
+            screen.blit(text, text_rect)
+
         
 # Clase Instrucciones
 class InstructionsState:
     """
     Estado del menú de instrucciones.
     
-    Muestra el título del juego, instrucciones básicas y
-    espera a que el jugador presione una tecla para empezar.
+    Muestra el título del juego juntos con instrucciones básicas.
+    Espera a que el jugador presione la tecla para empezar el juego.
     """
 
     def __init__(self, state_manager):
-        """
-        Constructor del estado de menú.
-        
-        Args:
-            state_manager: Referencia al gestor de estados
-        """
+        """Constructor del estado de instrucciones."""
         self.state_manager = state_manager
+
+    def handle_events(self, events):
+        """Maneja los eventos del menú de instrucciones."""
+        for event in events:
+            if event.type == pygame.KEYDOWN:
+                if event.key == KEY_SPACE or event.key == KEY_ENTER:
+                    self.state_manager.change_state(STATE_PLAYING)
+                elif event.key == KEY_M:
+                    self.state_manager.change_state(STATE_MENU)
+                elif event.key == KEY_ESCAPE:
+                    return False  # Señal para salir del juego
+        
+        return True  # Continuar ejecutando
+    
+    def update(self):
+        """Actualiza la lógica del menú (no hay mucho que hacer aquí)."""
+        pass
+
+    def draw(self, screen):
+        """Dibuja el menú de instrucciones"""
+        
+        # Limpiar pantalla con color de fondo
+        screen.fill(LIGHT_BLUE)
+
+        # Fondo de pantalla
+        fondo = pygame.image.load(SPRITE_BACKGROUND).convert()
+        fondo_center = fondo.get_rect(center=(WINDOW_WIDTH//2, 350))
+        screen.blit(fondo, fondo_center)
+
+        # Dibujar un rectángulo
+        rect_objeto = pygame.Rect(300, 150, 150, 80)
+        pygame.draw.rect(screen, BLUE, rect_objeto)
+
+    
 
 class PlayingState:
     """

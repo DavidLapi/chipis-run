@@ -24,6 +24,21 @@ O específicamente este archivo:
 
 Referencias útiles:
 - unittest: https://docs.python.org/3/library/unittest.html
+
+IMPORTANTE:
+Añadir un punto (.) detrás de cada módulo para hacer funcionar los testeos de los objetos.
+De esta forma, Python sabe cuál es el 'paquete padre' al que debe referirse.
+EJEMPLO: 
+from settings import *
+Saltaría este error --> ModuleNotFoundError: No module named 'settings'
+Para solucionarlo, se modifica lo siguiente:
+from .settings import *
+
+Otra cosa importante:
+Si se requiere de ejecutar el juego (comando: 'make run' o 'py .\src\main.py'),
+se tienen que eliminar dichos puntos explicados en el ejemplo anterior.
+El programa en sí ya sabe qué módulos se debe ejecutar
+
 """
 
 import unittest

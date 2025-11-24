@@ -114,11 +114,13 @@ KEY_ENTER = pygame.K_RETURN
 KEY_ESCAPE = pygame.K_ESCAPE
 KEY_P = pygame.K_p
 KEY_I = pygame.K_i # Tecla instrucciones
+KEY_M = pygame.K_m # Tecla menú principal
 
 # === CONFIGURACIÓN DE ESTADOS DEL JUEGO ===
 # Estos son los diferentes estados o pantallas del juego
 STATE_MENU = "menu"
 STATE_PLAYING = "playing"
+STATE_INSTRUCTIONS = "instructions" # IMPLEMENTADO: Estado de instrucciones
 STATE_GAME_OVER = "game_over"
 STATE_PAUSED = "paused"  # ✅ IMPLEMENTADO: Estado de pausa
 
