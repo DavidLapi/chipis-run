@@ -419,7 +419,8 @@ def load_game_settings():
             'up': 'UP',
             'down': 'DOWN',
             'shoot': 'SPACE',
-            'pause': 'p'
+            'pause': 'p',
+            'instruccions': 'i'
         }
     }
     

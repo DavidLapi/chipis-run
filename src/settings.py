@@ -49,7 +49,8 @@ BLUE = (0, 0, 255)         # Solo azul al máximo
 YELLOW = (255, 255, 0)     # Rojo + Verde = Amarillo
 GRAY = (128, 128, 128)     # Valor medio de todos
 LIGHT_BLUE = (173, 216, 230) # Combinación personalizada
-PURPLE = (128, 0, 128)
+PURPLE = (128, 0, 128)     # Color púrpura combinando rojo y azul
+GREEN_LIGHT = (158, 255, 0) # Combinación de verde y rojo para que sea verde claro
 
 # === CONFIGURACIÓN DEL JUGADOR ===
 PLAYER_WIDTH = 40      # Ancho del sprite del jugador
@@ -63,11 +64,11 @@ PLAYER_START_X = WINDOW_WIDTH // 2 - PLAYER_WIDTH // 2
 PLAYER_START_Y = WINDOW_HEIGHT - PLAYER_HEIGHT - 20
 
 # === CONFIGURACIÓN DE CUCHILLOS ===
-KNIFE_WIDTH = 8        # Ancho del cuchillo
-KNIFE_HEIGHT = 20      # Alto del cuchillo
-KNIFE_SPEED = 10       # Velocidad del cuchillo (píxeles por frame)
-KNIFE_COLOR = YELLOW   # Color del cuchillo
-KNIFE_COOLDOWN = 30    # Tiempo de cooldown en frames (0.5 segundos a 60 FPS)
+SCRAPER_WIDTH = 8        # Ancho del cuchillo
+SCRAPER_HEIGHT = 20      # Alto del cuchillo
+SCRAPER_SPEED = 10       # Velocidad del cuchillo (píxeles por frame)
+SCRAPER_COLOR = YELLOW   # Color del cuchillo
+SCRAPER_COOLDOWN = 30    # Tiempo de cooldown en frames (0.5 segundos a 60 FPS)
 
 # === CONFIGURACIÓN DE OBSTÁCULOS ===
 OBSTACLE_WIDTH = 30    # Ancho del obstáculo
@@ -83,15 +84,15 @@ POWERUP_SPEED = 2      # Velocidad de caída (más lento que obstáculos)
 POWERUP_SPAWN_RATE = 300  # Frames entre spawn de power-ups (5 segundos a 60 FPS)
 
 # Colores de power-ups
-VODKA_COLOR = PURPLE   # Vodka Boost - color morado
-TEA_COLOR = GREEN      # Té Mágico - color verde
+COCACOLA_COLOR = PURPLE   # Coca-cola Boost - color morado
+CACHOPO_COLOR = GREEN      # Cachopo Mágico - color verde
 
 # Duración de efectos (en frames)
-VODKA_DURATION = 180   # 3 segundos a 60 FPS
-TEA_DURATION = 240     # 4 segundos a 60 FPS
+COCACOLA_DURATION = 180   # 3 segundos a 60 FPS
+CACHOPO_DURATION = 240     # 4 segundos a 60 FPS
 
 # Multiplicadores de efectos
-VODKA_SPEED_MULTIPLIER = 1.5  # El jugador se mueve 50% más rápido
+COCACOLA_SPEED_MULTIPLIER = 1.5  # El jugador se mueve 50% más rápido
 
 # === CONFIGURACIÓN DE PUNTUACIÓN ===
 POINTS_PER_OBSTACLE_AVOIDED = 1    # Puntos por esquivar obstáculo
@@ -112,6 +113,7 @@ KEY_SPACE = pygame.K_SPACE
 KEY_ENTER = pygame.K_RETURN
 KEY_ESCAPE = pygame.K_ESCAPE
 KEY_P = pygame.K_p
+KEY_I = pygame.K_i # Tecla instrucciones
 
 # === CONFIGURACIÓN DE ESTADOS DEL JUEGO ===
 # Estos son los diferentes estados o pantallas del juego
@@ -154,11 +156,12 @@ SPRITE_CHIPI_MALO = "assets/sprites/chipi_malo.png"
 # SPRITE_KNIFE = "assets/sprites/knife.png"
 SPRITE_SPATULA = "assets/sprites/scraper.jpg"
 # SPRITE_POWERUP = "assets/sprites/powerup.png"
-
-
+SPRITE_COCACOLA = "assets/sprites/cocacola_pixelart.png"
+SPRITE_CACHOPO = "assets/sprites/cachopo_powerup.png"
 # SPRITE_BACKGROUND
 SPRITE_BACKGROUND = "assets/sprites/image_background.png"
 SPRITE_BACKGROUND_GAME = "assets/sprites/image_background_game.png"
+# SOUNDS
 SOUND_THROW = "assets/sounds/knife-throw.wav"
 SOUND_HIT = "assets/sounds/hit_bonk.wav"
 SOUND_METAL_PIPE = "assets/sounds/metal-pipe.wav"

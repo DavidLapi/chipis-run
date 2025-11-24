@@ -124,11 +124,15 @@ class MenuState:
         fondo_center = fondo.get_rect(center=(WINDOW_WIDTH//2, 350))
         screen.blit(fondo, fondo_center)
 
-
         # Título del juego
         # title_text = self.state_manager.font_large.render("Chipi's Run", True, BLACK)
         # title_rect = title_text.get_rect(center=(WINDOW_WIDTH//2, 150))
         # screen.blit(title_text, title_rect)
+
+        # Version del juego
+        version_text = self.state_manager.font_small.render("V. 0.1.0", True, BLACK)
+        version_rect = version_text.get_rect(right=650, top=180)
+        screen.blit(version_text, version_rect)
         
         # Subtítulo
         subtitle_text = self.state_manager.font_medium.render("La Aventura Épica Jamás Vista", True, PURPLE)
@@ -154,8 +158,23 @@ class MenuState:
             text_rect = text.get_rect(center=(WINDOW_WIDTH//2, start_y + i * 25))
             screen.blit(text, text_rect)
         
-        
+# Clase Instrucciones
+class InstructionsState:
+    """
+    Estado del menú de instrucciones.
+    
+    Muestra el título del juego, instrucciones básicas y
+    espera a que el jugador presione una tecla para empezar.
+    """
 
+    def __init__(self, state_manager):
+        """
+        Constructor del estado de menú.
+        
+        Args:
+            state_manager: Referencia al gestor de estados
+        """
+        self.state_manager = state_manager
 
 class PlayingState:
     """
@@ -261,8 +280,7 @@ class PlayingState:
                 
                     # TODO 4: Añadir sonido de daño
                     # Iniciar música con mixer
-                else:
-                    pygame.mixer.Sound(SOUND_METAL_PIPE).play()
+                    # No funciona el sonido
         
         # Detectar colisiones cuchillo-obstáculos
         for knife in knives[:]:
@@ -345,7 +363,7 @@ class PlayingState:
         
         # Estado del escudo
         if player.has_shield:
-            shield_text = self.state_manager.font_small.render("🛡️ ESCUDO ACTIVO", True, TEA_COLOR)
+            shield_text = self.state_manager.font_small.render("🛡️ ESCUDO ACTIVO", True, CACHOPO_COLOR)
             screen.blit(shield_text, (10, 70))
         
         # ✅ IMPLEMENTADO: Barra de cooldown visual

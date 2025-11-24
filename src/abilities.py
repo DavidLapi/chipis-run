@@ -148,13 +148,13 @@ class PowerUpEffect:
         """Constructor del sistema de efectos de power-ups."""
         
         # Timers para cada tipo de power-up
-        self.vodka_timer = 0      # Frames restantes del efecto Vodka Boost
-        self.tea_timer = 0        # Frames restantes del efecto Té Mágico
+        self.cocacola_timer = 0      # Frames restantes del efecto Vodka Boost
+        self.cachopo_timer = 0        # Frames restantes del efecto Té Mágico
         
         # Estado original del jugador (para restaurar después)
         self.original_speed = PLAYER_SPEED
     
-    def activate_vodka_boost(self, player):
+    def activate_cocacola_boost(self, player):
         """
         Activa el efecto Vodka Boost (aumenta velocidad).
         
@@ -162,25 +162,25 @@ class PowerUpEffect:
             player: Instancia del jugador para modificar su velocidad
         """
         
-        self.vodka_timer = VODKA_DURATION
+        self.cocacola_timer = COCACOLA_DURATION
         
         # Aumentar la velocidad del jugador
-        player.speed = int(self.original_speed * VODKA_SPEED_MULTIPLIER)
+        player.speed = int(self.original_speed * COCACOLA_SPEED_MULTIPLIER)
         
         # TODO 4: Añadir efecto sonoro
         pygame.mixer.Sound(SOUND_POWERUP).play()
         
-        print("¡Vodka Boost activado! Velocidad aumentada.")  # Debug
+        print("¡Coca-cola Boost activado! Velocidad aumentada.")  # Debug
     
-    def activate_tea_shield(self, player):
+    def activate_cachopo_shield(self, player):
         """
-        Activa el efecto Té Mágico (escudo protector).
+        Activa el efecto Cachopo Mágico (escudo protector).
         
         Args:
             player: Instancia del jugador para darle el escudo
         """
         
-        self.tea_timer = TEA_DURATION
+        self.cachopo_timer = CACHOPO_DURATION
         
         # Activar escudo
         player.has_shield = True
@@ -188,7 +188,7 @@ class PowerUpEffect:
         # TODO 4: Añadir efecto sonoro
         pygame.mixer.Sound(SOUND_POWERUP).play()
         
-        print("¡Té Mágico activado! Escudo protector obtenido.")  # Debug
+        print("¡Cachopo Mágico activado! Escudo protector obtenido.")  # Debug
     
     def update(self, player):
         """
@@ -199,38 +199,38 @@ class PowerUpEffect:
         """
         
         # Actualizar Vodka Boost
-        if self.vodka_timer > 0:
-            self.vodka_timer -= 1
+        if self.cocacola_timer > 0:
+            self.cocacola_timer -= 1
             
             # Si el efecto termina, restaurar velocidad normal
-            if self.vodka_timer == 0:
+            if self.cocacola_timer == 0:
                 player.speed = self.original_speed
-                print("Vodka Boost terminado. Velocidad normal restaurada.")  # Debug
+                print("Coca-cola Boost terminado. Velocidad normal restaurada.")  # Debug
         
-        # Actualizar Té Mágico
-        if self.tea_timer > 0:
-            self.tea_timer -= 1
+        # Actualizar Cachopo Mágico
+        if self.cachopo_timer > 0:
+            self.cachopo_timer -= 1
             
             # Si el efecto termina, quitar escudo
-            if self.tea_timer == 0:
+            if self.cachopo_timer == 0:
                 player.has_shield = False
-                print("Té Mágico terminado. Escudo desactivado.")  # Debug
+                print("Cachopo Mágico terminado. Escudo desactivado.")  # Debug
     
-    def is_vodka_active(self):
-        """Comprueba si el efecto Vodka Boost está activo."""
-        return self.vodka_timer > 0
+    def is_cocacola_active(self):
+        """Comprueba si el efecto Coca-cola Boost está activo."""
+        return self.cocacola_timer > 0
     
-    def is_tea_active(self):
-        """Comprueba si el efecto Té Mágico está activo."""
-        return self.tea_timer > 0
+    def is_cachopo_active(self):
+        """Comprueba si el efecto Cachopo Mágico está activo."""
+        return self.cachopo_timer > 0
     
-    def get_vodka_time_left(self):
-        """Obtiene el tiempo restante del Vodka Boost en segundos."""
-        return self.vodka_timer / FPS
+    def get_cocacola_time_left(self):
+        """Obtiene el tiempo restante del Coca-cola Boost en segundos."""
+        return self.cocacola_timer / FPS
     
-    def get_tea_time_left(self):
-        """Obtiene el tiempo restante del Té Mágico en segundos."""
-        return self.tea_timer / FPS
+    def get_cachopo_time_left(self):
+        """Obtiene el tiempo restante del Cachopo Mágico en segundos."""
+        return self.cachopo_timer / FPS
     
     # ✅ IMPLEMENTADO: Método para mostrar efectos activos en pantalla
     def draw_active_effects(self, screen, font):
@@ -243,10 +243,10 @@ class PowerUpEffect:
         """
         y_offset = 140  # Posición inicial (debajo de la barra de cooldown)
         
-        if self.is_vodka_active():
-            # ✅ IMPLEMENTADO: Efecto visual para Vodka Boost
-            time_left = f"⚡ Vodka Boost: {self.get_vodka_time_left():.1f}s"
-            text = font.render(time_left, True, VODKA_COLOR)
+        if self.is_cocacola_active():
+            # ✅ IMPLEMENTADO: Efecto visual para Coca-cola Boost
+            time_left = f"⚡ Coca-Cola Boost: {self.get_cocacola_time_left():.1f}s"
+            text = font.render(time_left, True, COCACOLA_COLOR)
             
             # Fondo semi-transparente para mejor legibilidad
             text_rect = text.get_rect()
@@ -256,15 +256,15 @@ class PowerUpEffect:
             background_rect = pygame.Rect(text_rect.x - 2, text_rect.y - 2,
                                         text_rect.width + 4, text_rect.height + 4)
             pygame.draw.rect(screen, BLACK, background_rect)
-            pygame.draw.rect(screen, VODKA_COLOR, background_rect, 1)
+            pygame.draw.rect(screen, COCACOLA_COLOR, background_rect, 1)
             
             screen.blit(text, text_rect)
             y_offset += 25
         
-        if self.is_tea_active():
-            # ✅ IMPLEMENTADO: Efecto visual para Té Mágico
-            time_left = f"🛡️ Té Mágico: {self.get_tea_time_left():.1f}s"
-            text = font.render(time_left, True, TEA_COLOR)
+        if self.is_cachopo_active():
+            # ✅ IMPLEMENTADO: Efecto visual para Cachopo Mágico
+            time_left = f"🛡️ Cachopo Mágico: {self.get_cachopo_time_left():.1f}s"
+            text = font.render(time_left, True, CACHOPO_COLOR)
             
             # Fondo semi-transparente
             text_rect = text.get_rect()
@@ -274,7 +274,7 @@ class PowerUpEffect:
             background_rect = pygame.Rect(text_rect.x - 2, text_rect.y - 2,
                                         text_rect.width + 4, text_rect.height + 4)
             pygame.draw.rect(screen, BLACK, background_rect)
-            pygame.draw.rect(screen, TEA_COLOR, background_rect, 1)
+            pygame.draw.rect(screen, CACHOPO_COLOR, background_rect, 1)
             
             screen.blit(text, text_rect)
             y_offset += 25

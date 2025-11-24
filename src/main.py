@@ -76,7 +76,7 @@ class JuliasRunGame:
         
         # Crear la ventana del juego
         self.screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
-        pygame.display.set_caption("Julia's Run - ¡Esquiva y Sobrevive!")
+        pygame.display.set_caption("Chipi's Run - ¡Esquiva y Sobrevive!")
         
         # Control de tiempo (FPS)
         self.clock = pygame.time.Clock()
@@ -129,7 +129,7 @@ class JuliasRunGame:
         self.particles = []      # ✅ IMPLEMENTADO: Lista de efectos de partículas
         
         # Sistemas de juego
-        self.knife_cooldown = CooldownTimer(KNIFE_COOLDOWN)
+        self.knife_cooldown = CooldownTimer(SCRAPER_COOLDOWN)
         self.powerup_effects = PowerUpEffect()
         self.combo_system = ComboSystem()     # ✅ IMPLEMENTADO: Sistema de combos
         self.screen_effects = ScreenEffect()  # ✅ IMPLEMENTADO: Efectos de pantalla
@@ -418,9 +418,9 @@ class JuliasRunGame:
                 
                 # Activar efecto según el tipo
                 if powerup.type == 'vodka':
-                    self.powerup_effects.activate_vodka_boost(self.player)
+                    self.powerup_effects.activate_cocacola_boost(self.player)
                 elif powerup.type == 'tea':
-                    self.powerup_effects.activate_tea_shield(self.player)
+                    self.powerup_effects.activate_cachopo_shield(self.player)
                 
                 # ✅ IMPLEMENTADO: Efectos visuales para power-ups
                 sparkle_particles = ParticleEffect(
@@ -521,7 +521,12 @@ class JuliasRunGame:
         """
         
         # Limpiar pantalla
-        surface.fill(BLACK)
+        surface.fill(GREEN_LIGHT)
+
+        # Fondo de pantalla del juego
+        fondo = pygame.image.load(SPRITE_BACKGROUND_GAME).convert()
+        fondo_center = fondo.get_rect(center=(WINDOW_WIDTH//2, 350))
+        surface.blit(fondo, fondo_center)
         
         # Dibujar todas las entidades
         self.player.draw(surface)
@@ -573,7 +578,7 @@ class JuliasRunGame:
         
         # Estado del escudo con mejor visualización
         if self.player.has_shield:
-            shield_text = self.state_manager.font_small.render("🛡️ ESCUDO ACTIVO", True, TEA_COLOR)
+            shield_text = self.state_manager.font_small.render("🛡️ ESCUDO ACTIVO", True, CACHOPO_COLOR)
             shield_rect = shield_text.get_rect()
             shield_rect.x = 10
             shield_rect.y = 70
@@ -582,7 +587,7 @@ class JuliasRunGame:
             bg_rect = pygame.Rect(shield_rect.x - 2, shield_rect.y - 2,
                                 shield_rect.width + 4, shield_rect.height + 4)
             pygame.draw.rect(surface, BLACK, bg_rect)
-            pygame.draw.rect(surface, TEA_COLOR, bg_rect, 1)
+            pygame.draw.rect(surface, CACHOPO_COLOR, bg_rect, 1)
             
             surface.blit(shield_text, shield_rect)
         

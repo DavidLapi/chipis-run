@@ -164,9 +164,9 @@ class Player:
         self.speed = PLAYER_SPEED           # Velocidad de movimiento
         self.has_shield = False             # Sin escudo al inicio
         
-        # === CARGA DE SPRITE PARA JULIA ===
-        # Intentar cargar sprite de Julia
-        sprite_path = os.path.join("assets", "sprites", "julia_pixelart.jpg")
+        # === CARGA DE SPRITE PARA CHIPI ===
+        # Intentar cargar sprite de Chipi Bueno
+        sprite_path = os.path.join("assets", "sprites", "chipi_bueno_pixelart.png")
         self.sprite, self.using_fallback = load_sprite_with_fallback(
             sprite_path, 
             PLAYER_COLOR,  # Color fallback si no hay imagen
@@ -266,7 +266,7 @@ class Player:
             
             # Si tiene escudo, cambiar color para indicarlo visualmente
             if self.has_shield:
-                color = TEA_COLOR  # Verde cuando tiene escudo
+                color = CACHOPO_COLOR  # Verde cuando tiene escudo
                 
                 # ✅ IMPLEMENTADO: Efecto de pulso para el escudo
                 pulse = abs((pygame.time.get_ticks() // 200) % 2)  # Cambia cada 200ms
@@ -305,7 +305,7 @@ class Player:
                 
                 # Crear superficie de tinte
                 tint_surface = pygame.Surface(sprite_to_draw.get_size(), pygame.SRCALPHA)
-                tint_surface.fill((*TEA_COLOR, 100))  # Verde semi-transparente
+                tint_surface.fill((*CACHOPO_COLOR, 100))  # Verde semi-transparente
                 
                 # Aplicar tinte al sprite
                 sprite_to_draw.blit(tint_surface, (0, 0), special_flags=pygame.BLEND_ALPHA_SDL2)
@@ -339,6 +339,7 @@ class Player:
             # ✅ IMPLEMENTADO: Efecto visual al perder escudo
             self.hit_flash_timer = 20  # 20 frames de parpadeo
             print("¡Escudo perdido!")  # Mensaje educativo para debug
+            pygame.mixer.Sound(SOUND_METAL_PIPE).play() # Sonido de escudo perdido (metal pipe)
             return True
         else:
             # Pierde una vida
@@ -358,7 +359,7 @@ class Player:
 
 class Obstacle:
     """
-    🍖 CLASE OBSTACLE - Representa un cachopo (obstáculo) que cae
+    🍖 CLASE OBSTACLE - Representa un chipi malvado (obstáculo) que cae
     
     📚 CONCEPTOS POO QUE APRENDERÁS:
     
@@ -436,7 +437,7 @@ class Obstacle:
         # === CARGA DE SPRITE PARA CACHOPO (OBSTÁCULO) ===
         # Intentar cargar sprite del cachopo
         # sprite_path = os.path.join("assets", "sprites", "cachopo_pixelart.jpg")
-        # Cambiando imagen de cachopo a chipi_malo
+        # Cambiando imagen de CACHOPO a CHIPI MALO
         sprite_path = os.path.join("assets", "sprites", "chipi_malo_pixelart.png") 
         self.sprite, self.using_fallback = load_sprite_with_fallback(
             sprite_path, 
@@ -558,20 +559,21 @@ class Knife:
         """
         
         # El cuchillo aparece en el centro superior del jugador
-        start_x = player_rect.centerx - KNIFE_WIDTH // 2
+        start_x = player_rect.centerx - SCRAPER_WIDTH // 2
         start_y = player_rect.top
         
-        self.rect = pygame.Rect(start_x, start_y, KNIFE_WIDTH, KNIFE_HEIGHT)
-        self.speed = KNIFE_SPEED
+        self.rect = pygame.Rect(start_x, start_y, SCRAPER_WIDTH, SCRAPER_HEIGHT)
+        self.speed = SCRAPER_SPEED
         
         # === CARGA DE SPRITE PARA CUCHILLO ===
         # Intentar cargar sprite del cuchillo
-        sprite_path = os.path.join("assets", "sprites", "knife__pixelart.jpg")
+        # Cambio cuchillo a espátula (scraper)
+        sprite_path = os.path.join("assets", "sprites", "scraper.jpg")
         self.sprite, self.using_fallback = load_sprite_with_fallback(
             sprite_path, 
-            KNIFE_COLOR,  # Color fallback
-            KNIFE_WIDTH, 
-            KNIFE_HEIGHT
+            SCRAPER_COLOR,  # Color fallback
+            SCRAPER_WIDTH, 
+            SCRAPER_HEIGHT
         )
         
         # Efectos visuales para el cuchillo
@@ -579,16 +581,16 @@ class Knife:
         
         # Debug info para desarrollo
         if self.using_fallback:
-            print("🔪 Knife: Usando rectángulo fallback (imagen no encontrada)")
+            print("🔪 Scraper: Usando rectángulo fallback (imagen no encontrada)")
         else:
-            print("🔪 Knife: Sprite cargado exitosamente desde", sprite_path)
+            print("🔪 Scraper: Sprite cargado exitosamente desde", sprite_path)
     
     def update(self):
         """
-        Actualiza la posición del cuchillo (lo hace subir).
+        Actualiza la posición de la espátula (lo hace subir).
         
         Returns:
-            bool: False si el cuchillo salió de la pantalla, True si sigue visible
+            bool: False si la espátula salió de la pantalla, True si sigue visible
         """
         
         self.rect.y -= self.speed
@@ -600,18 +602,18 @@ class Knife:
         return self.rect.bottom > 0
     
     def draw(self, screen):
-        """Dibuja el cuchillo en la pantalla."""
+        """Dibuja la espátula en la pantalla."""
         
         # === RENDERIZADO DE SPRITE O FALLBACK ===
         if self.using_fallback:
             # Dibujar rectángulo fallback
-            pygame.draw.rect(screen, KNIFE_COLOR, self.rect)
+            pygame.draw.rect(screen, SCRAPER_COLOR, self.rect)
             
             # Añadir una punta para que parezca más un cuchillo
             tip_points = [(self.rect.centerx, self.rect.top - 3),
                          (self.rect.left + 2, self.rect.top + 3),
                          (self.rect.right - 2, self.rect.top + 3)]
-            pygame.draw.polygon(screen, KNIFE_COLOR, tip_points)
+            pygame.draw.polygon(screen, SCRAPER_COLOR, tip_points)
             
         else:
             # === RENDERIZADO DE SPRITE REAL ===
@@ -636,7 +638,7 @@ class Knife:
 
 class PowerUp:
     """
-    Esta clase representa un power-up (Vodka Boost o Té Mágico).
+    Esta clase representa un power-up (Coca-cola Boost o Cachopo Mágico).
     
     Los power-ups aparecen ocasionalmente y dan efectos especiales
     cuando el jugador los recoge.
@@ -647,7 +649,7 @@ class PowerUp:
         Constructor del power-up.
         
         Args:
-            powerup_type: Tipo de power-up ('vodka' o 'tea')
+            powerup_type: Tipo de power-up ('coca-cola' o 'cachopo')
         """
         
         # Posición aleatoria en X, fija en Y (parte superior)
@@ -660,16 +662,16 @@ class PowerUp:
         
         # Color según el tipo
         if powerup_type == 'vodka':
-            self.color = VODKA_COLOR
-            self.symbol = "V"  # Símbolo para identificar visualmente
-            # === CARGA DE SPRITE PARA VODKA ===
-            sprite_path = os.path.join("assets", "sprites", "vodka_pixelart.jpg")
-        else:  # 'tea'
-            self.color = TEA_COLOR
-            self.symbol = "T"
+            self.color = COCACOLA_COLOR
+            self.symbol = "C"  # Símbolo para identificar visualmente
+            # === CARGA DE SPRITE PARA COCACOLA ===
+            sprite_path = os.path.join("assets", "sprites", "cocacola_pixelart.png")
+        else:  # 'cachopo'
+            self.color = CACHOPO_COLOR
+            self.symbol = "C"
             # Para el té, usar el mismo sprite de vodka como placeholder
             # (en un juego real tendrías un sprite específico para cada power-up)
-            sprite_path = os.path.join("assets", "sprites", "vodka_pixelart.jpg")
+            sprite_path = os.path.join("assets", "sprites", "cachopo_powerup.png")
         
         # Cargar sprite del power-up
         self.sprite, self.using_fallback = load_sprite_with_fallback(
@@ -766,7 +768,7 @@ class PowerUp:
             if self.type == 'tea':
                 # Crear superficie de tinte para el té
                 tint_surface = pygame.Surface(draw_rect.size, pygame.SRCALPHA)
-                tint_surface.fill((*TEA_COLOR, 80))  # Verde semi-transparente
+                tint_surface.fill((*CACHOPO_COLOR, 80))  # Verde semi-transparente
                 screen.blit(tint_surface, draw_rect, special_flags=pygame.BLEND_ALPHA_SDL2)
         
         # ✅ IMPLEMENTADO: Efecto de brillo ocasional (para ambos casos)
