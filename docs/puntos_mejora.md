@@ -25,6 +25,7 @@
 - Añadido segundo tipo de enemigo con comportamiento diferente (movimiento zigzag)
 - Implementado nueva arma: shurikens con mayor velocidad que las espátulas
 - Agregado contador visual de vidas restantes en la interfaz
+- Ajustes del volúmen de sonido del juego
 
 # *Versión 1.3*
 
