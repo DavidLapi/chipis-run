@@ -535,6 +535,22 @@ class JuliasRunGame:
         fondo = pygame.image.load(SPRITE_BACKGROUND_GAME).convert()
         fondo_center = fondo.get_rect(center=(WINDOW_WIDTH//2, 350))
         surface.blit(fondo, fondo_center)
+
+        # Instrucciones
+        instructions = [
+            "Controles:",
+            "Flechas --> Mover",
+            "Espacio --> Lanzar cuchillo",
+            "Esquiva obstáculos rojos",
+            "Recoge power-ups de colores"
+        ]
+
+        start_y = 80
+        for i, instruction in enumerate(instructions):
+            color = BLACK if instruction != "" else WHITE
+            text = self.state_manager.font_small.render(instruction, True, color)
+            text_rect = text.get_rect(right=843, top=start_y + i * 25)
+            surface.blit(text, text_rect)
         
         # Dibujar todas las entidades
         self.player.draw(surface)

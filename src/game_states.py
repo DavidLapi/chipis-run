@@ -99,8 +99,7 @@ class MenuState:
             if event.type == pygame.KEYDOWN:
                 if event.key == KEY_SPACE or event.key == KEY_ENTER:
                     self.state_manager.change_state(STATE_PLAYING)
-                elif event.key == KEY_I:
-                    self.state_manager.change_state(STATE_INSTRUCTIONS)
+                
                 elif event.key == KEY_ESCAPE:
                     return False  # Señal para salir del juego
         
@@ -131,7 +130,7 @@ class MenuState:
 
         # Version del juego
         version_text = self.state_manager.font_small.render("V. 0.1.1", True, BLACK)
-        version_rect = version_text.get_rect(right=650, top=180)
+        version_rect = version_text.get_rect(right=675, top=180)
         screen.blit(version_text, version_rect)
         
         # Subtítulo
@@ -163,11 +162,17 @@ class MenuState:
 
         # Comandos
         comands = [
-            "Presiona tecla 'i' para manual de instrucciones",
-            "",
             "Presiona ESPACIO para comenzar",
             "ESC para salir"
         ]
+
+        # Rectángulo con borde que engloba 'comands' 
+        rect_objeto_borde = pygame.Rect(275, 340, 300, 80)
+        pygame.draw.rect(screen, GREEN, rect_objeto_borde, 7)
+
+        # Rectángulo con relleno semitranparente que engloba 'comands' 
+        rect_objeto = pygame.Rect(280, 345, 290, 70)
+        pygame.draw.rect(screen, YELLOW, rect_objeto)
 
         start_y = 370
         for i, comand in enumerate(comands):
@@ -375,6 +380,7 @@ class PlayingState:
         screen.fill(BLACK)
 
         
+
         # Dibujar todas las entidades
         player.draw(screen)
         

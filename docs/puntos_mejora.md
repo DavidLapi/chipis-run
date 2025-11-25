@@ -6,15 +6,17 @@
 - Agregado sistema de aparición de enemigos desde la parte superior
 - Implementado arma: cuchillo
 - Sistema de puntuación ilimitada y 3 vidas funcionando correctamente
-- Implementados dos power-ups: velocidad y escudo protector
+- Implementados dos power-ups: velocidad (vodka) y escudo protector (té mágico)
 - Creado menú principal y pantalla de Game Over
 
 # *Versión 0.1.1* (Actualizado actualmente)
 
+- Cambio título Julia´s Run --> Chipi´s Run
 - Actualizados dos power-ups: velocidad (sustituir vodka por coca-cola) y escudo protector (sustituir té por cachopo mágico)
 - Agregada música de fondo y efectos de sonido para power-ups y colisiones
 - Actualizado menú principal y pantalla de Game Over
-- Actualizado arma: cuchillo por espátula
+- Actualizado arma: sustitución cuchillo por espátula
+- Añadido comentarios eficientes para comprensión legible
 
 # **Futuras posibles mejoras**
 
@@ -28,11 +30,12 @@
 
 - Añadido tercer tipo de enemigo: enemigo rápido con menos resistencia
 - Agregado efecto visual de explosión al eliminar enemigos
+- Fix Bug: Pantalla Game Over que vuelva a empezar la partida desde 0
 
 # *Versión 0.2.0*
 
 - Implementado sistema de niveles con 3 mapas diferentes (bosque, desierto, ciudad)
-- Agregado menú de pausa con opciones de continuar, reiniciar y salir
+- Agregado/Modificado menú de pausa con opciones de continuar, reiniciar y salir
 - Nuevo power-up: disparo doble que lanza dos proyectiles simultáneamente
 
 # *Versión 0.2.1*

@@ -63,11 +63,11 @@ PLAYER_COLOR = BLUE    # Color del rectángulo del jugador (placeholder)
 PLAYER_START_X = WINDOW_WIDTH // 2 - PLAYER_WIDTH // 2
 PLAYER_START_Y = WINDOW_HEIGHT - PLAYER_HEIGHT - 20
 
-# === CONFIGURACIÓN DE CUCHILLOS ===
-SCRAPER_WIDTH = 8        # Ancho del cuchillo
-SCRAPER_HEIGHT = 20      # Alto del cuchillo
-SCRAPER_SPEED = 10       # Velocidad del cuchillo (píxeles por frame)
-SCRAPER_COLOR = YELLOW   # Color del cuchillo
+# === CONFIGURACIÓN DE ESPÁTULAS ===
+SCRAPER_WIDTH = 8        # Ancho de la espátula
+SCRAPER_HEIGHT = 20      # Alto de la espátuña
+SCRAPER_SPEED = 10       # Velocidad de la espátula (píxeles por frame)
+SCRAPER_COLOR = YELLOW   # Color de la espátula
 SCRAPER_COOLDOWN = 30    # Tiempo de cooldown en frames (0.5 segundos a 60 FPS)
 
 # === CONFIGURACIÓN DE OBSTÁCULOS ===
@@ -113,7 +113,7 @@ KEY_SPACE = pygame.K_SPACE
 KEY_ENTER = pygame.K_RETURN
 KEY_ESCAPE = pygame.K_ESCAPE
 KEY_P = pygame.K_p
-KEY_I = pygame.K_i # Tecla instrucciones
+# KEY_I = pygame.K_i # Tecla instrucciones
 KEY_M = pygame.K_m # Tecla menú principal
 
 # === CONFIGURACIÓN DE ESTADOS DEL JUEGO ===
