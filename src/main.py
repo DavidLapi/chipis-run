@@ -1,5 +1,5 @@
 """
-main.py - Punto de entrada de Julia's Run
+main.py - Punto de entrada de Chipi's Run
 
 📚 PROPÓSITO EDUCATIVO:
 Este archivo demuestra cómo se estructura un programa completo usando POO.
