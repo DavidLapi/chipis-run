@@ -541,7 +541,7 @@ class JuliasRunGame:
             "Controles:",
             "Flechas --> Mover",
             "Espacio --> Lanzar cuchillo",
-            "Esquiva obstáculos rojos",
+            "Esquiva chipis malvados",
             "Recoge power-ups de colores"
         ]
 

@@ -1,6 +1,6 @@
 ## **Puntos a mejorar**
 
-# *Versión 0.1.0* (plantilla básica del juego)
+# *Versión 1.0* (plantilla básica del juego)
 
 - Implementado sistema base de movimiento del personaje y lanzamiento de cuchillos
 - Agregado sistema de aparición de enemigos desde la parte superior
@@ -9,7 +9,7 @@
 - Implementados dos power-ups: velocidad (vodka) y escudo protector (té mágico)
 - Creado menú principal y pantalla de Game Over
 
-# *Versión 0.1.1* (Actualizado actualmente)
+# *Versión 1.1* (Actualizado actualmente)
 
 - Cambio título Julia´s Run --> Chipi´s Run
 - Actualizados dos power-ups: velocidad (sustituir vodka por coca-cola) y escudo protector (sustituir té por cachopo mágico)
@@ -20,49 +20,49 @@
 
 # **Futuras posibles mejoras**
 
-# *Versión 0.1.2*
+# *Versión 1.2*
 
 - Añadido segundo tipo de enemigo con comportamiento diferente (movimiento zigzag)
 - Implementado nueva arma: shurikens con mayor velocidad que las espátulas
 - Agregado contador visual de vidas restantes en la interfaz
 
-# *Versión 0.1.3*
+# *Versión 1.3*
 
 - Añadido tercer tipo de enemigo: enemigo rápido con menos resistencia
 - Agregado efecto visual de explosión al eliminar enemigos
 - Fix Bug: Pantalla Game Over que vuelva a empezar la partida desde 0
 
-# *Versión 0.2.0*
+# *Versión 2.0*
 
 - Implementado sistema de niveles con 3 mapas diferentes (bosque, desierto, ciudad)
 - Agregado/Modificado menú de pausa con opciones de continuar, reiniciar y salir
 - Nuevo power-up: disparo doble que lanza dos proyectiles simultáneamente
 
-# *Versión 0.2.1*
+# *Versión 2.1*
 
-- Añadido cuarto tipo de enemigo: jefe de nivel con barra de vida
+- Añadido cuarto tipo de enemigo: jefe de nivel con barra de vida (Nombre: ✨ EL CHIP ✨)
 - Implementado sistema de combo: puntos extra por eliminar enemigos consecutivamente
 - Agregados efectos de partículas al recoger power-ups
 
-# *Versión 0.2.2*
+# *Versión 2.2*
 
 - Implementada nueva arma: lanzas con mayor alcance pero menor velocidad
 - Añadido enemigo volador que se mueve horizontalmente
 - Agregado power-up de vida extra que restaura una vida perdida
 
-# *Versión 0.2.3*
+# *Versión 2.3*
 
 - Implementado sistema de puntuación por récord (high score) guardado localmente
 - Añadidos sonidos únicos para cada tipo de enemigo al ser eliminado
 - Agregada animación de entrada para enemigos que aparecen en pantalla
 
-# *Versión 0.3.0*
+# *Versión 3.0*
 
 - Implementado cuarto mapa: zona de hielo con física resbaladiza
 - Añadido sistema de logros: desbloquear títulos por alcanzar hitos
 - Nuevo modo de juego: Supervivencia (oleadas infinitas con dificultad creciente)
 
-# *Versión 0.4.0*
+# *Versión 4.0*
 
 - Multijugador local:
 # - Segundo jugador con teclas diferentes (Teclas WASD)
